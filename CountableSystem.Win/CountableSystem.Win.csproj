@@ -183,6 +183,9 @@
     <Compile Include="WinApplication.Designer.cs">
       <DependentUpon>WinApplication.cs</DependentUpon>
     </Compile>
+    <Compile Include="WinApplicationEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -2,16 +2,8 @@
 using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Model;
 using DevExpress.ExpressApp.Security;
-using DevExpress.Persistent.Base;
-using DevExpress.Xpo;
 using DevExpress.Xpo.DB.Helpers;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace CountableSystem.Module.BusinessObjects.Security
 {
@@ -24,12 +16,15 @@ namespace CountableSystem.Module.BusinessObjects.Security
     public class CustomLogonParametersForStandardAuthentication : AuthenticationStandardLogonParameters, IDatabaseNameParameter
     {
        
-        private string databaseName;
-        //[ModelDefault("PredefinedValues", ChangeDatabaseHelper.Databases)]
+        private string databaseName= ChangeDatabaseHelper.Databases.Split(';')[0];
+        [ModelDefault("PredefinedValues", ChangeDatabaseHelper.Databases)]
         public string DatabaseName
         {
             get { return databaseName; }
-            set { databaseName = value; }
+            set {
+                databaseName = value;
+               
+               }
         }
         
        
@@ -49,7 +44,7 @@ namespace CountableSystem.Module.BusinessObjects.Security
     //}
     public class ChangeDatabaseHelper
     {
-       // public const string Databases = "MyCompanyInvoices;MyCompanyInvoices1";
+       public const string Databases = "CountableSystem;CountableSystem2";
         public static void UpdateDatabaseName(XafApplication application, string databaseName)
         {
             ConnectionStringParser helper = new ConnectionStringParser(application.ConnectionString);
@@ -59,19 +54,18 @@ namespace CountableSystem.Module.BusinessObjects.Security
             {
                 helper.RemovePartByName("Data Source");
                 application.ConnectionString = string.Format("Data Source={0};{1}", databaseName, helper.GetConnectionString());
-            }//if MysqlServer
+            }//if MysqlServer,dudas con lo del server
             else if(conexion.Contains("MySql"))
             {
                 helper.RemovePartByName("Server");
                 application.ConnectionString = string.Format("Server={0};{1}", databaseName, helper.GetConnectionString());
-            }//SQL Server
+            }//SQL Server ,dudas con lo del server
             else if (conexion.Contains("Postgres"))
             {
                 helper.RemovePartByName("Server");
                 application.ConnectionString = string.Format("Server={0};{1}", databaseName, helper.GetConnectionString());
             }
-
-           
+              
 
 
         }
