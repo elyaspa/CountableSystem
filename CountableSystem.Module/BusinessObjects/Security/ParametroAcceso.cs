@@ -23,7 +23,7 @@ namespace CountableSystem.Module.BusinessObjects.Security
     [DomainComponent]
     public class CustomLogonParametersForStandardAuthentication : AuthenticationStandardLogonParameters, IDatabaseNameParameter
     {
-        string serverName;
+       
         private string databaseName;
         //[ModelDefault("PredefinedValues", ChangeDatabaseHelper.Databases)]
         public string DatabaseName
@@ -33,17 +33,7 @@ namespace CountableSystem.Module.BusinessObjects.Security
         }
         
        
-        public string ServerName
-        {
-            get
-            {
-                return serverName;
-            }
-            set
-            {
-               serverName = value; 
-            }
-        }
+       
     }
     //[DomainComponent]
     //public class CustomLogonParametersForActiveDirectoryAuthentication : IDatabaseNameParameter
@@ -64,26 +54,24 @@ namespace CountableSystem.Module.BusinessObjects.Security
         {
             ConnectionStringParser helper = new ConnectionStringParser(application.ConnectionString);
             var conexion =helper.GetConnectionString();
-            //if MysQL 
+            //if MSSqlServer 
             if (conexion.Contains("MSSqlServer"))
             {
                 helper.RemovePartByName("Data Source");
                 application.ConnectionString = string.Format("Data Source={0};{1}", databaseName, helper.GetConnectionString());
-            }
+            }//if MysqlServer
             else if(conexion.Contains("MySql"))
             {
-                helper.RemovePartByName("Data Source");
-                application.ConnectionString = string.Format("Data Source={0};{1}", databaseName, helper.GetConnectionString());
-            }
+                helper.RemovePartByName("Server");
+                application.ConnectionString = string.Format("Server={0};{1}", databaseName, helper.GetConnectionString());
+            }//SQL Server
             else if (conexion.Contains("Postgres"))
             {
-
+                helper.RemovePartByName("Server");
+                application.ConnectionString = string.Format("Server={0};{1}", databaseName, helper.GetConnectionString());
             }
 
-            //if SQL Server
-
-
-            //if Postgress
+           
 
 
         }
