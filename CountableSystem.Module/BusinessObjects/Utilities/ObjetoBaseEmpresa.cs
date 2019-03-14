@@ -29,7 +29,7 @@ namespace CountableSystem.Module.BusinessObjects.Utilities
         public override void AfterConstruction()
         {
             base.AfterConstruction();
-            this.Empresa = BuscarObjetoEmpresa(ParametroDeAcceso);
+           // this.Empresa = BuscarObjetoEmpresa(ParametroDeAcceso);
             // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
         }
 
@@ -49,12 +49,12 @@ namespace CountableSystem.Module.BusinessObjects.Utilities
                  }
         }
 
-        private Empresa BuscarObjetoEmpresa(ParametroAcceso parametroDeAcceso)
-        {
-            object EmpresaObjeto = Session.FindObject(typeof(Empresa), new BinaryOperator("Codigo", parametroDeAcceso.CodigoEmpresa), false);
-            Empresa LaEmpresa = (Empresa)EmpresaObjeto;
-            return LaEmpresa;
-        }
+        //private Empresa BuscarObjetoEmpresa(ParametroAcceso parametroDeAcceso)
+        //{
+        //    object EmpresaObjeto = Session.FindObject(typeof(Empresa), new BinaryOperator("Codigo", parametroDeAcceso.CodigoEmpresa), false);
+        //    Empresa LaEmpresa = (Empresa)EmpresaObjeto;
+        //    return LaEmpresa;
+        //}
 
 
     }

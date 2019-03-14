@@ -11,6 +11,7 @@ using DevExpress.Xpo;
 using DevExpress.ExpressApp.Xpo;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.BaseImpl.PermissionPolicy;
+using CountableSystem.Module.BusinessObjects.Security;
 
 namespace CountableSystem.Module.DatabaseUpdate {
     // For more typical usage scenarios, be sure to check out https://documentation.devexpress.com/eXpressAppFramework/clsDevExpressExpressAppUpdatingModuleUpdatertopic.aspx
@@ -26,32 +27,65 @@ namespace CountableSystem.Module.DatabaseUpdate {
             //    theObject = ObjectSpace.CreateObject<DomainObject1>();
             //    theObject.Name = name;
             //}
-            PermissionPolicyUser sampleUser = ObjectSpace.FindObject<PermissionPolicyUser>(new BinaryOperator("UserName", "User"));
-            if(sampleUser == null) {
-                sampleUser = ObjectSpace.CreateObject<PermissionPolicyUser>();
-                sampleUser.UserName = "User";
-                sampleUser.SetPassword("");
-            }
-            PermissionPolicyRole defaultRole = CreateDefaultRole();
-            sampleUser.Roles.Add(defaultRole);
+            CreacionDeSeguridad();
+   //         PermissionPolicyUser sampleUser = ObjectSpace.FindObject<PermissionPolicyUser>(new BinaryOperator("UserName", "User"));
+   //         if(sampleUser == null) {
+   //             sampleUser = ObjectSpace.CreateObject<PermissionPolicyUser>();
+   //             sampleUser.UserName = "User";
+   //             sampleUser.SetPassword("");
+   //         }
+   //         PermissionPolicyRole defaultRole = CreateDefaultRole();
+   //         sampleUser.Roles.Add(defaultRole);
 
-            PermissionPolicyUser userAdmin = ObjectSpace.FindObject<PermissionPolicyUser>(new BinaryOperator("UserName", "Admin"));
-            if(userAdmin == null) {
-                userAdmin = ObjectSpace.CreateObject<PermissionPolicyUser>();
+   //         PermissionPolicyUser userAdmin = ObjectSpace.FindObject<PermissionPolicyUser>(new BinaryOperator("UserName", "Admin"));
+   //         if(userAdmin == null) {
+   //             userAdmin = ObjectSpace.CreateObject<PermissionPolicyUser>();
+   //             userAdmin.UserName = "Admin";
+   //             // Set a password if the standard authentication type is used
+   //             userAdmin.SetPassword("");
+   //         }
+			//// If a role with the Administrators name doesn't exist in the database, create this role
+   //         PermissionPolicyRole adminRole = ObjectSpace.FindObject<PermissionPolicyRole>(new BinaryOperator("Name", "Administrators"));
+   //         if(adminRole == null) {
+   //             adminRole = ObjectSpace.CreateObject<PermissionPolicyRole>();
+   //             adminRole.Name = "Administrators";
+   //         }
+   //         adminRole.IsAdministrative = true;
+			//userAdmin.Roles.Add(adminRole);
+
+         
+            //This line persists created object(s).
+        }
+        //ADDED BY YASPA
+
+
+        private void CreacionDeSeguridad()
+        {
+            Session LocalSesion = ((XPObjectSpace)this.ObjectSpace).Session;
+
+            Usuario userAdmin = ObjectSpace.FindObject<Usuario>(new BinaryOperator("UserName", "Admin"));
+            if (userAdmin == null)
+            {
+                userAdmin = ObjectSpace.CreateObject<Usuario>();
                 userAdmin.UserName = "Admin";
                 // Set a password if the standard authentication type is used
-                userAdmin.SetPassword("");
+                userAdmin.SetPassword("123");
             }
-			// If a role with the Administrators name doesn't exist in the database, create this role
-            PermissionPolicyRole adminRole = ObjectSpace.FindObject<PermissionPolicyRole>(new BinaryOperator("Name", "Administrators"));
-            if(adminRole == null) {
-                adminRole = ObjectSpace.CreateObject<PermissionPolicyRole>();
+
+            RolUsuario adminRole = ObjectSpace.FindObject<RolUsuario>(new BinaryOperator("Name", "Administrators"));
+            if (adminRole == null)
+            {
+                adminRole = ObjectSpace.CreateObject<RolUsuario>();
                 adminRole.Name = "Administrators";
             }
+
             adminRole.IsAdministrative = true;
-			userAdmin.Roles.Add(adminRole);
-            ObjectSpace.CommitChanges(); //This line persists created object(s).
+            adminRole.PermissionPolicy = SecurityPermissionPolicy.AllowAllByDefault;
+            userAdmin.Roles.Add(adminRole);
+            ObjectSpace.CommitChanges();
         }
+
+            //ENDS HERE
         public override void UpdateDatabaseBeforeUpdateSchema() {
             base.UpdateDatabaseBeforeUpdateSchema();
             //if(CurrentDBVersion < new Version("1.1.0.0") && CurrentDBVersion > new Version("0.0.0.0")) {

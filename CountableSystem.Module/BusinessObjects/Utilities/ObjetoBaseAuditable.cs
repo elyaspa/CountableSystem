@@ -27,9 +27,9 @@ namespace CountableSystem.Module.BusinessObjects.Utilities
         public override void AfterConstruction()
         {
             base.AfterConstruction();
-            parametroDeAcceso = ObtenerParametrosAcceso();
-            this.Usuario = ObtenerObjetoUsuario(parametroDeAcceso);
-            this.CreadoPor = parametroDeAcceso.Usuario;
+            //parametroDeAcceso = ObtenerParametrosAcceso();
+            //this.Usuario = ObtenerObjetoUsuario(parametroDeAcceso);
+            //this.CreadoPor = parametroDeAcceso.Usuario;
             this.FechaCreacion = DateTime.Now;
             // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
         }
@@ -126,39 +126,39 @@ namespace CountableSystem.Module.BusinessObjects.Utilities
             }
         }
 
-
-        ParametroAcceso parametroDeAcceso;
-        [Browsable(false)]
-        public ParametroAcceso ParametroDeAcceso
-        {
-            get
-            {
-                return parametroDeAcceso;
-            }
+        //old code
+        //ParametroAcceso parametroDeAcceso;
+        //[Browsable(false)]
+        //public ParametroAcceso ParametroDeAcceso
+        //{
+        //    get
+        //    {
+        //        return parametroDeAcceso;
+        //    }
      
-        }
+        //}
 
-        private static ParametroAcceso ObtenerParametrosAcceso()
-        {
-            ParametroAcceso ParametrosDeAcceso = (ParametroAcceso)(SecuritySystem.LogonParameters);
-            return ParametrosDeAcceso;
-        }
+        //private static ParametroAcceso ObtenerParametrosAcceso()
+        //{
+        //    ParametroAcceso ParametrosDeAcceso = (ParametroAcceso)(SecuritySystem.LogonParameters);
+        //    return ParametrosDeAcceso;
+        //}
 
-        public Usuario ObtenerObjetoUsuario(ParametroAcceso parametroDeAcceso)
-        {
-            object UsuarioObjecto = Session.FindObject(typeof(Usuario), new BinaryOperator("UserName", parametroDeAcceso.Usuario), false);
-            Usuario ElUsuario = (Usuario)UsuarioObjecto;
-            return ElUsuario;
-        }
+        //public Usuario ObtenerObjetoUsuario(ParametroAcceso parametroDeAcceso)
+        //{
+        //    object UsuarioObjecto = Session.FindObject(typeof(Usuario), new BinaryOperator("UserName", parametroDeAcceso.Usuario), false);
+        //    Usuario ElUsuario = (Usuario)UsuarioObjecto;
+        //    return ElUsuario;
+        //}
 
 
-        protected override void OnSaving()
-        {
-            base.OnSaving();
-            parametroDeAcceso = ObtenerParametrosAcceso();
-            this.ModificadoPor = parametroDeAcceso.Usuario;
-            this.FechaModificacion = DateTime.Now;
-        }
+        //protected override void OnSaving()
+        //{
+        //    base.OnSaving();
+        //    parametroDeAcceso = ObtenerParametrosAcceso();
+        //    this.ModificadoPor = parametroDeAcceso.Usuario;
+        //    this.FechaModificacion = DateTime.Now;
+        //}
 
     }
 }

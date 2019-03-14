@@ -29,25 +29,27 @@
             this.module4 = new CountableSystem.Module.Win.CountableSystemWindowsFormsModule();
             this.securityModule1 = new DevExpress.ExpressApp.Security.SecurityModule();
             this.securityStrategyComplex1 = new DevExpress.ExpressApp.Security.SecurityStrategyComplex();
-            this.securityStrategyComplex1.SupportNavigationPermissionsForTypes = false;
             this.validationModule = new DevExpress.ExpressApp.Validation.ValidationModule();
             this.validationWindowsFormsModule = new DevExpress.ExpressApp.Validation.Win.ValidationWindowsFormsModule();
-            this.authenticationStandard1 = new DevExpress.ExpressApp.Security.AuthenticationStandard();
+            this.autentication1 = new CountableSystem.Module.BusinessObjects.Security.Autentication();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // securityStrategyComplex1
             // 
-            this.securityStrategyComplex1.Authentication = this.authenticationStandard1;
+            this.securityStrategyComplex1.AllowAnonymousAccess = false;
+            this.securityStrategyComplex1.Authentication = this.autentication1;
             this.securityStrategyComplex1.RoleType = typeof(DevExpress.Persistent.BaseImpl.PermissionPolicy.PermissionPolicyRole);
-            this.securityStrategyComplex1.UserType = typeof(DevExpress.Persistent.BaseImpl.PermissionPolicy.PermissionPolicyUser);
+            this.securityStrategyComplex1.SupportNavigationPermissionsForTypes = false;
+            this.securityStrategyComplex1.UserType = typeof(CountableSystem.Module.BusinessObjects.Security.Usuario);
             // 
-            // securityModule1
+            // validationModule
             // 
-            this.securityModule1.UserType = typeof(DevExpress.Persistent.BaseImpl.PermissionPolicy.PermissionPolicyUser);
+            this.validationModule.AllowValidationDetailsAccess = true;
+            this.validationModule.IgnoreWarningAndInformationRules = false;
             // 
-            // authenticationStandard1
+            // autentication1
             // 
-            this.authenticationStandard1.LogonParametersType = typeof(DevExpress.ExpressApp.Security.AuthenticationStandardLogonParameters);
+            this.autentication1.LogonParametersType = typeof(CountableSystem.Module.BusinessObjects.Security.CustomLogonParametersForStandardAuthentication);
             // 
             // CountableSystemWindowsFormsApplication
             // 
@@ -55,16 +57,15 @@
             this.CheckCompatibilityType = DevExpress.ExpressApp.CheckCompatibilityType.DatabaseSchema;
             this.Modules.Add(this.module1);
             this.Modules.Add(this.module2);
+            this.Modules.Add(this.validationModule);
             this.Modules.Add(this.module3);
+            this.Modules.Add(this.validationWindowsFormsModule);
             this.Modules.Add(this.module4);
             this.Modules.Add(this.securityModule1);
             this.Security = this.securityStrategyComplex1;
-            this.Modules.Add(this.validationModule);
-            this.Modules.Add(this.validationWindowsFormsModule);
             this.UseOldTemplates = false;
             this.DatabaseVersionMismatch += new System.EventHandler<DevExpress.ExpressApp.DatabaseVersionMismatchEventArgs>(this.CountableSystemWindowsFormsApplication_DatabaseVersionMismatch);
             this.CustomizeLanguagesList += new System.EventHandler<DevExpress.ExpressApp.CustomizeLanguagesListEventArgs>(this.CountableSystemWindowsFormsApplication_CustomizeLanguagesList);
-
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }
@@ -77,8 +78,9 @@
         private CountableSystem.Module.Win.CountableSystemWindowsFormsModule module4;
         private DevExpress.ExpressApp.Security.SecurityModule securityModule1;
         private DevExpress.ExpressApp.Security.SecurityStrategyComplex securityStrategyComplex1;
-        private DevExpress.ExpressApp.Security.AuthenticationStandard authenticationStandard1;
         private DevExpress.ExpressApp.Validation.ValidationModule validationModule;
         private DevExpress.ExpressApp.Validation.Win.ValidationWindowsFormsModule validationWindowsFormsModule;
+        private Module.BusinessObjects.Security.Autentication autentication1;
+        // private Module.BusinessObjects.Security.Autenticacion autenticacion1;
     }
 }
