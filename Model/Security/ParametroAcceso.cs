@@ -53,18 +53,18 @@ namespace CS.Model.Security
             //if MSSqlServer 
             if (conexion.Contains("MSSqlServer"))
             {
-                helper.RemovePartByName("Data Source");
-                application.ConnectionString = string.Format("Data Source={0};{1}", databaseName, helper.GetConnectionString());
+                helper.RemovePartByName("Initial Catalog");
+                application.ConnectionString = string.Format("Initial Catalog={0};{1}", databaseName, helper.GetConnectionString());
             }//if MysqlServer,dudas con lo del server
             else if(conexion.Contains("MySql"))
             {
-                helper.RemovePartByName("Server");
-                application.ConnectionString = string.Format("Server={0};{1}", databaseName, helper.GetConnectionString());
+                helper.RemovePartByName("Database");
+                application.ConnectionString = string.Format("Database={0};{1}", databaseName, helper.GetConnectionString());
             }//SQL Server ,dudas con lo del server
             else if (conexion.Contains("Postgres"))
             {
-                helper.RemovePartByName("Server");
-                application.ConnectionString = string.Format("Server={0};{1}", databaseName, helper.GetConnectionString());
+                helper.RemovePartByName("Database");
+                application.ConnectionString = string.Format("Database={0};{1}", databaseName, helper.GetConnectionString());
             }
               
 

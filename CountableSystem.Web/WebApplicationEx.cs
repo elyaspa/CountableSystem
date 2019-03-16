@@ -11,10 +11,10 @@ namespace DbChooser.Web {
 		protected override void ReadSecuredLogonParameters() {
 			base.ReadSecuredLogonParameters(); // the "UserName" is restored in the base method.
 
-			string databaseName = HttpContext.Current.Request.Params[WebChangeDatabaseController.DatabaseParameterName];
-			if(!string.IsNullOrEmpty(databaseName)) {
-				((IDatabaseNameParameter)SecuritySystem.LogonParameters).DatabaseName = databaseName;
-			}
+			//string databaseName = HttpContext.Current.Request.Params[WebChangeDatabaseController.DatabaseParameterName];
+			//if(!string.IsNullOrEmpty(databaseName)) {
+			//	((IDatabaseNameParameter)SecuritySystem.LogonParameters).DatabaseName = databaseName;
+			//}
 		}
 		private bool canReadSecuredLogonParameters = true;
 		protected override bool CanReadSecuredLogonParameters() {
