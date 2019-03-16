@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CountableSystem.Module.BusinessObjects.Utilities
+﻿namespace CS.Model.Utilities
 {
     public class Enumeradores
     {

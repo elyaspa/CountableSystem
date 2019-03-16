@@ -4,8 +4,10 @@ using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Win;
 using DevExpress.ExpressApp.Security;
 using CountableSystem.Module.Win;
-using CountableSystem.Module.BusinessObjects;
-using CountableSystem.Module.BusinessObjects.Security;
+using CS.Model.Security;
+//using CountableSystem.Module.BusinessObjects;
+//using CountableSystem.Module.BusinessObjects.Security;
+
 
 namespace CountableSystem.Win {
 	public partial class CountableSystemWindowsFormsApplication : WinApplication {

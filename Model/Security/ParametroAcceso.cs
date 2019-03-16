@@ -5,7 +5,7 @@ using DevExpress.ExpressApp.Security;
 using DevExpress.Xpo.DB.Helpers;
 
 
-namespace CountableSystem.Module.BusinessObjects.Security
+namespace CS.Model.Security
 {
    
     public interface IDatabaseNameParameter
@@ -16,8 +16,8 @@ namespace CountableSystem.Module.BusinessObjects.Security
     public class CustomLogonParametersForStandardAuthentication : AuthenticationStandardLogonParameters, IDatabaseNameParameter
     {
        
-        private string databaseName= ChangeDatabaseHelper.Databases.Split(';')[0];
-        [ModelDefault("PredefinedValues", ChangeDatabaseHelper.Databases)]
+        private string databaseName;
+       // [ModelDefault("PredefinedValues", ChangeDatabaseHelper.Databases)]
         public string DatabaseName
         {
             get { return databaseName; }
@@ -44,11 +44,12 @@ namespace CountableSystem.Module.BusinessObjects.Security
     //}
     public class ChangeDatabaseHelper
     {
-       public const string Databases = "CountableSystem;CountableSystem2";
+       //public const string Databases = "CountableSystem;CountableSystem2";
         public static void UpdateDatabaseName(XafApplication application, string databaseName)
         {
             ConnectionStringParser helper = new ConnectionStringParser(application.ConnectionString);
             var conexion =helper.GetConnectionString();
+           
             //if MSSqlServer 
             if (conexion.Contains("MSSqlServer"))
             {

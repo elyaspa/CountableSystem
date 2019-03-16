@@ -1,14 +1,10 @@
-﻿using CountableSystem.Module.BusinessObjects.Security;
-using DevExpress.ExpressApp.ConditionalAppearance;
-using DevExpress.ExpressApp.Model;
-using DevExpress.Persistent.Base;
+﻿using CS.Model.Security;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Xpo;
 
 using System;
-using System.Linq;
 
-namespace CountableSystem.Module.BusinessObjects.Utilities
+namespace CS.Model.Utilities
 {
     [NonPersistent]
     public abstract class ObjetoBaseAuditable : BaseObject
@@ -28,12 +24,12 @@ namespace CountableSystem.Module.BusinessObjects.Utilities
         }
 
         string creadoPor;
-        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
-        [ModelDefault("Caption", "Creado Por")]
-        [Persistent("CREADO_POR")]
-        [DescripcionObjetos("Nombre Corto del usuario que crea el registro")]
-        [VisibleInDetailView(false), VisibleInListView(false), VisibleInLookupListView(false)]
-        [Appearance("Deshabilitar Creado Por - Objeto Base Auditable", Enabled = false)]
+        //[Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        //[ModelDefault("Caption", "Creado Por")]
+        //[Persistent("CREADO_POR")]
+        //[DescripcionObjetos("Nombre Corto del usuario que crea el registro")]
+        //[VisibleInDetailView(false), VisibleInListView(false), VisibleInLookupListView(false)]
+        //[Appearance("Deshabilitar Creado Por - Objeto Base Auditable", Enabled = false)]
         public string CreadoPor
         {
             get
@@ -47,12 +43,12 @@ namespace CountableSystem.Module.BusinessObjects.Utilities
         }
 
         string modificadoPor;
-        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
-        [ModelDefault("Caption", "Modificado Por")]
-        [Persistent("MODIFICADO_POR")]
-        [DescripcionObjetos("Ultimo usuario que modificó el registro")]
-        [VisibleInDetailView(false), VisibleInListView(false), VisibleInLookupListView(false)]
-        [Appearance("Deshabilitar Modificado Por - Objeto Base Auditable", Enabled = false)]
+        //[Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        //[ModelDefault("Caption", "Modificado Por")]
+        //[Persistent("MODIFICADO_POR")]
+        //[DescripcionObjetos("Ultimo usuario que modificó el registro")]
+        //[VisibleInDetailView(false), VisibleInListView(false), VisibleInLookupListView(false)]
+        //[Appearance("Deshabilitar Modificado Por - Objeto Base Auditable", Enabled = false)]
         public string ModificadoPor
         {
             get
@@ -66,11 +62,11 @@ namespace CountableSystem.Module.BusinessObjects.Utilities
         }
 
         DateTime fechaCreacion;
-        [ModelDefault("Caption", "Fecha de creación")]
-        [Persistent("FECHA_CREACION")]
-        [DescripcionObjetos("Fecha de creación del registro")]
-        [VisibleInDetailView(false), VisibleInListView(false), VisibleInLookupListView(false)]
-        [Appearance("Deshabilitar Fecha Creación - Objeto Base Auditable", Enabled = false)]
+        //[ModelDefault("Caption", "Fecha de creación")]
+        //[Persistent("FECHA_CREACION")]
+        //[DescripcionObjetos("Fecha de creación del registro")]
+        //[VisibleInDetailView(false), VisibleInListView(false), VisibleInLookupListView(false)]
+        //[Appearance("Deshabilitar Fecha Creación - Objeto Base Auditable", Enabled = false)]
         public DateTime FechaCreacion
         {
             get
@@ -84,11 +80,11 @@ namespace CountableSystem.Module.BusinessObjects.Utilities
         }
 
         DateTime fechaModificacion;
-        [ModelDefault("Caption", "Fecha de modificación")]
-        [Persistent("FECHA_MODIFICACION")]
-        [DescripcionObjetos("Fecha de modificación")]
-        [VisibleInDetailView(false), VisibleInListView(false), VisibleInLookupListView(false)]
-        [Appearance("Deshabilitar Fecha Modificación - Objeto Base Auditable", Enabled = false)]
+        //[ModelDefault("Caption", "Fecha de modificación")]
+        //[Persistent("FECHA_MODIFICACION")]
+        //[DescripcionObjetos("Fecha de modificación")]
+        //[VisibleInDetailView(false), VisibleInListView(false), VisibleInLookupListView(false)]
+        //[Appearance("Deshabilitar Fecha Modificación - Objeto Base Auditable", Enabled = false)]
         public DateTime FechaModificacion
         {
             get
@@ -102,11 +98,11 @@ namespace CountableSystem.Module.BusinessObjects.Utilities
         }
 
         Usuario usuario;
-        [ModelDefault("Caption", "Usuario")]
-        [Persistent("USUARIO")]
-        [DescripcionObjetos("Objeto del usuario que creo o modifico el registro")]
-        [VisibleInDetailView(false), VisibleInListView(false), VisibleInLookupListView(false)]
-        [Appearance("Deshabilitar Usuario - Objeto Base Auditable", Enabled = false)]
+        //[ModelDefault("Caption", "Usuario")]
+        //[Persistent("USUARIO")]
+        //[DescripcionObjetos("Objeto del usuario que creo o modifico el registro")]
+        //[VisibleInDetailView(false), VisibleInListView(false), VisibleInLookupListView(false)]
+        //[Appearance("Deshabilitar Usuario - Objeto Base Auditable", Enabled = false)]
         public Usuario Usuario
         {
             get

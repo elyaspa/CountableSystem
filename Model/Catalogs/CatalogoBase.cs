@@ -1,27 +1,16 @@
-﻿using CountableSystem.Module.BusinessObjects.Utilities;
-using System;
-using System.Linq;
-using System.Text;
+﻿using CS.Model.Utilities;
 using DevExpress.Xpo;
-using DevExpress.ExpressApp;
 using System.ComponentModel;
-using DevExpress.ExpressApp.DC;
-using DevExpress.Data.Filtering;
-using DevExpress.Persistent.Base;
-using System.Collections.Generic;
-using DevExpress.ExpressApp.Model;
-using DevExpress.Persistent.BaseImpl;
-using DevExpress.Persistent.Validation;
 
-namespace CountableSystem.Module.BusinessObjects.Catalog
+namespace CS.Model.Catalog
 {
-    [DefaultClassOptions]
-    [NavigationItem("Catálogos")]
-    [ModelDefault("Caption", "Catálogo Base")]
-    [Persistent(Constantes.PrefijoTabla + "CATALOGO_BASE")]
-    [DescripcionObjetos("Catálogo de cuentas comun paras las posibles empresas")]
-    [VisibleInReports(false)]
-    [DefaultProperty("Nombre")]
+    //[DefaultClassOptions]
+    //[NavigationItem("Catálogos")]
+    //[ModelDefault("Caption", "Catálogo Base")]
+    //[Persistent(Constantes.PrefijoTabla + "CATALOGO_BASE")]
+    //[DescripcionObjetos("Catálogo de cuentas comun paras las posibles empresas")]
+   // [VisibleInReports(false)]
+   // [DefaultProperty("Nombre")]
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
     public class CatalogoBase : ObjetoBaseAuditable
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).

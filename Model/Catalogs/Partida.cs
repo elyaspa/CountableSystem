@@ -1,21 +1,10 @@
-﻿using CountableSystem.Module.BusinessObjects.Utilities;
-using System;
-using System.Linq;
-using System.Text;
+﻿using System;
+using CS.Model.Utilities;
 using DevExpress.Xpo;
-using DevExpress.ExpressApp;
-using System.ComponentModel;
-using DevExpress.ExpressApp.DC;
-using DevExpress.Data.Filtering;
-using DevExpress.Persistent.Base;
-using System.Collections.Generic;
-using DevExpress.ExpressApp.Model;
-using DevExpress.Persistent.BaseImpl;
-using DevExpress.Persistent.Validation;
 
-namespace CountableSystem.Module.BusinessObjects.Catalog
+namespace CS.Model.Catalog
 {
-    [DefaultClassOptions]
+    //[DefaultClassOptions]
     
     public class Partida : ObjetoBaseEmpresa
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
@@ -92,7 +81,7 @@ namespace CountableSystem.Module.BusinessObjects.Catalog
         {
             get
             {
-                return GetCollection<CountableSystem.Module.BusinessObjects.Catalog.PartidaDetalle>(nameof(Detalles));
+                return GetCollection<PartidaDetalle>(nameof(Detalles));
             }
         }
 

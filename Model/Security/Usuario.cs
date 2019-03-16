@@ -1,24 +1,18 @@
-﻿using CountableSystem.Module.BusinessObjects.Utilities;
-using System;
-using System.Linq;
-using System.Text;
-using DevExpress.Xpo;
+﻿using DevExpress.Xpo;
 using System.ComponentModel;
-using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl.PermissionPolicy;
-using DevExpress.ExpressApp.Model;
-using CountableSystem.Module.BusinessObjects.Catalog;
+using CS.Model.Catalog;
 
-namespace CountableSystem.Module.BusinessObjects.Security
+namespace CS.Model.Security
 {
-    [DefaultClassOptions]
-    //[ImageName("BO_Contact")]
-    [NavigationItem("Seguridad")]
-    [ModelDefault("Caption", "Usuarios")]
-    [Persistent(Constantes.PrefijoTabla + "USUARIO")]
-    [DescripcionObjetos("Usuarios del sistema")]
-    [VisibleInReports(false)]
-    [DefaultProperty("NombreCompleto")]
+    //[DefaultClassOptions]
+    ////[ImageName("BO_Contact")]
+    //[NavigationItem("Seguridad")]
+    //[ModelDefault("Caption", "Usuarios")]
+    //[Persistent(Constantes.PrefijoTabla + "USUARIO")]
+    //[DescripcionObjetos("Usuarios del sistema")]
+    //[VisibleInReports(false)]
+    //[DefaultProperty("NombreCompleto")]
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
     public class Usuario : PermissionPolicyUser
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
@@ -33,9 +27,9 @@ namespace CountableSystem.Module.BusinessObjects.Security
         }
 
         string nombreCompleto;
-        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
-        [Persistent("NOMBRE_COMPLETO")]
-        [DescripcionObjetos("Nombre completo del usuario")]
+        //[Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        //[Persistent("NOMBRE_COMPLETO")]
+        //[DescripcionObjetos("Nombre completo del usuario")]
         public string NombreCompleto
         {
             get

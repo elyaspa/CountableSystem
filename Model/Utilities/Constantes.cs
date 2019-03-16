@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Runtime.Serialization;
 
 
-namespace CountableSystem.Module.BusinessObjects.Utilities
+namespace CS.Model.Utilities
 {
     [DataContract]
     public sealed class Constantes

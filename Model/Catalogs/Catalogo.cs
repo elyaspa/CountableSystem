@@ -1,12 +1,9 @@
-﻿using CountableSystem.Module.BusinessObjects.Utilities;
-using DevExpress.Persistent.Base;
+﻿using CS.Model.Utilities;
 using DevExpress.Xpo;
-using System;
-using System.Linq;
 
-namespace CountableSystem.Module.BusinessObjects.Catalog
+namespace CS.Model.Catalog
 {
-    [DefaultClassOptions]
+    // [DefaultClassOptions]
 
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
     public class Catalogo : ObjetoBaseEmpresa

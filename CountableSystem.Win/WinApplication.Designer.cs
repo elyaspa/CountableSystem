@@ -31,7 +31,7 @@
             this.securityStrategyComplex1 = new DevExpress.ExpressApp.Security.SecurityStrategyComplex();
             this.validationModule = new DevExpress.ExpressApp.Validation.ValidationModule();
             this.validationWindowsFormsModule = new DevExpress.ExpressApp.Validation.Win.ValidationWindowsFormsModule();
-            this.autentication1 = new CountableSystem.Module.BusinessObjects.Security.Autentication();
+            this.autentication1 = new CS.Model.Security.Autentication();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // securityStrategyComplex1
@@ -40,7 +40,7 @@
             this.securityStrategyComplex1.Authentication = this.autentication1;
             this.securityStrategyComplex1.RoleType = typeof(DevExpress.Persistent.BaseImpl.PermissionPolicy.PermissionPolicyRole);
             this.securityStrategyComplex1.SupportNavigationPermissionsForTypes = false;
-            this.securityStrategyComplex1.UserType = typeof(CountableSystem.Module.BusinessObjects.Security.Usuario);
+            this.securityStrategyComplex1.UserType = typeof(CS.Model.Security.Usuario);
             // 
             // validationModule
             // 
@@ -49,7 +49,7 @@
             // 
             // autentication1
             // 
-            this.autentication1.LogonParametersType = typeof(CountableSystem.Module.BusinessObjects.Security.CustomLogonParametersForStandardAuthentication);
+            this.autentication1.LogonParametersType = typeof(CS.Model.Security.CustomLogonParametersForStandardAuthentication);
             // 
             // CountableSystemWindowsFormsApplication
             // 
@@ -80,7 +80,7 @@
         private DevExpress.ExpressApp.Security.SecurityStrategyComplex securityStrategyComplex1;
         private DevExpress.ExpressApp.Validation.ValidationModule validationModule;
         private DevExpress.ExpressApp.Validation.Win.ValidationWindowsFormsModule validationWindowsFormsModule;
-        private Module.BusinessObjects.Security.Autentication autentication1;
+        private CS.Model.Security.Autentication autentication1;
         // private Module.BusinessObjects.Security.Autenticacion autenticacion1;
     }
 }

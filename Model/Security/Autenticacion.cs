@@ -1,14 +1,8 @@
-﻿using System;
-using System.Configuration;
-using System.Collections.Generic;
-using DevExpress.Data.Filtering;
-using DevExpress.ExpressApp;
+﻿using DevExpress.Data.Filtering;
 using DevExpress.ExpressApp.Security;
-using System.DirectoryServices.AccountManagement;
-using CountableSystem.Module.BusinessObjects.Catalog;
 using DevExpress.Persistent.BaseImpl.PermissionPolicy;
 
-namespace CountableSystem.Module.BusinessObjects.Security
+namespace CS.Model.Security
 {
     public class WinChangeDatabaseHelper
     {
