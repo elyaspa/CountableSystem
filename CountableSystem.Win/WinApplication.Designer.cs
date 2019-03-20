@@ -27,25 +27,24 @@
             this.module2 = new DevExpress.ExpressApp.Win.SystemModule.SystemWindowsFormsModule();
             this.module3 = new CountableSystem.Module.CountableSystemModule();
             this.module4 = new CountableSystem.Module.Win.CountableSystemWindowsFormsModule();
-            this.securityModule1 = new DevExpress.ExpressApp.Security.SecurityModule();
-            this.securityStrategyComplex1 = new DevExpress.ExpressApp.Security.SecurityStrategyComplex();
             this.validationModule = new DevExpress.ExpressApp.Validation.ValidationModule();
             this.validationWindowsFormsModule = new DevExpress.ExpressApp.Validation.Win.ValidationWindowsFormsModule();
+            this.securityModule1 = new DevExpress.ExpressApp.Security.SecurityModule();
+            this.securityStrategyComplex1 = new DevExpress.ExpressApp.Security.SecurityStrategyComplex();
             this.autentication1 = new CS.Model.Security.Autentication();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
-            // 
-            // securityStrategyComplex1
-            // 
-            this.securityStrategyComplex1.AllowAnonymousAccess = false;
-            this.securityStrategyComplex1.Authentication = this.autentication1;
-            this.securityStrategyComplex1.RoleType = typeof(DevExpress.Persistent.BaseImpl.PermissionPolicy.PermissionPolicyRole);
-            this.securityStrategyComplex1.SupportNavigationPermissionsForTypes = false;
-            this.securityStrategyComplex1.UserType = typeof(CS.Model.Security.Usuario);
             // 
             // validationModule
             // 
             this.validationModule.AllowValidationDetailsAccess = true;
             this.validationModule.IgnoreWarningAndInformationRules = false;
+            // 
+            // securityStrategyComplex1
+            // 
+            this.securityStrategyComplex1.AllowAnonymousAccess = false;
+            this.securityStrategyComplex1.Authentication = this.autentication1;
+            this.securityStrategyComplex1.RoleType = typeof(CS.Model.Security.RolUsuario);
+            this.securityStrategyComplex1.UserType = typeof(CS.Model.Security.Usuario);
             // 
             // autentication1
             // 
@@ -77,10 +76,10 @@
         private CountableSystem.Module.CountableSystemModule module3;
         private CountableSystem.Module.Win.CountableSystemWindowsFormsModule module4;
         private DevExpress.ExpressApp.Security.SecurityModule securityModule1;
-        private DevExpress.ExpressApp.Security.SecurityStrategyComplex securityStrategyComplex1;
         private DevExpress.ExpressApp.Validation.ValidationModule validationModule;
         private DevExpress.ExpressApp.Validation.Win.ValidationWindowsFormsModule validationWindowsFormsModule;
         private CS.Model.Security.Autentication autentication1;
+        public DevExpress.ExpressApp.Security.SecurityStrategyComplex securityStrategyComplex1;
         // private Module.BusinessObjects.Security.Autenticacion autenticacion1;
     }
 }
