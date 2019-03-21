@@ -1,11 +1,12 @@
 ﻿using System;
 using CS.Model.Utilities;
+using DevExpress.Persistent.Base;
 using DevExpress.Xpo;
 
 namespace CS.Model.Catalog
 {
-    //[DefaultClassOptions]
-    
+
+    [DefaultClassOptions]
     public class Partida : ObjetoBaseEmpresa
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
         public Partida(Session session)

@@ -53,6 +53,10 @@
             this.AdditionalExportedTypes.Add(typeof(CS.Model.Catalog.CalendarioFiscal));
             this.AdditionalExportedTypes.Add(typeof(CS.Model.Catalog.Catalogo));
             this.AdditionalExportedTypes.Add(typeof(CS.Model.Catalog.SaldoCatalogo));
+            this.AdditionalExportedTypes.Add(typeof(CS.Model.Catalog.CatalogoBase));
+            this.AdditionalExportedTypes.Add(typeof(CS.Model.Catalog.CentroDeCosto));
+            this.AdditionalExportedTypes.Add(typeof(CS.Model.Catalog.Partida));
+            this.AdditionalExportedTypes.Add(typeof(CS.Model.Catalog.PartidaDetalle));
             this.RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.SystemModule.SystemModule));
             this.RequiredModuleTypes.Add(typeof(DevExpress.ExpressApp.Validation.ValidationModule));
 

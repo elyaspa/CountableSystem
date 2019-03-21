@@ -1,10 +1,10 @@
 ﻿using CS.Model.Utilities;
+using DevExpress.Persistent.Base;
 using DevExpress.Xpo;
 
 namespace CS.Model.Catalog
 {
-   // [DefaultClassOptions]
- 
+    [DefaultClassOptions]
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
     public class TipoPartida : ObjetoBaseEmpresa
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).

@@ -17,12 +17,12 @@ namespace CountableSystem.Module
             InitializeComponent();
 			BaseObject.OidInitializationMode = OidInitializationMode.AfterConstruction;
             //added by yaspa
-            AyudanteDeReflection AyudanteReflection = new AyudanteDeReflection();
-            var HeredadosDeObjetoBaseAuditable = AyudanteReflection.ObtenerDescendientesBase(typeof(ObjetoBaseAuditable));
-            foreach (Type ElTipo in HeredadosDeObjetoBaseAuditable)
-            {
-                AdditionalExportedTypes.Add(ElTipo);
-            }
+            //AyudanteDeReflection AyudanteReflection = new AyudanteDeReflection();
+            //var HeredadosDeObjetoBaseAuditable = AyudanteReflection.ObtenerDescendientesBase(typeof(ObjetoBaseAuditable));
+            //foreach (Type ElTipo in HeredadosDeObjetoBaseAuditable)
+            //{
+            //    AdditionalExportedTypes.Add(ElTipo);
+            //}
             //ends
         }
         public override IEnumerable<ModuleUpdater> GetModuleUpdaters(IObjectSpace objectSpace, Version versionFromDB) {
@@ -31,7 +31,7 @@ namespace CountableSystem.Module
         }
         public override void Setup(XafApplication application) {
             //added by yaspa
-            //application.CreateCustomLogonWindowObjectSpace += application_CreateCustomLogonWindowObjectSpace;
+           // application.CreateCustomLogonWindowObjectSpace += application_CreateCustomLogonWindowObjectSpace;
             //end
             base.Setup(application);
             // Manage various aspects of the application UI and behavior at the module level.
@@ -40,7 +40,7 @@ namespace CountableSystem.Module
         //private void application_CreateCustomLogonWindowObjectSpace(object sender, CreateCustomLogonWindowObjectSpaceEventArgs e)
         //{
         //    IObjectSpace objectSpace = ((XafApplication)sender).CreateObjectSpace();
-        //    ((Autentication)e.LogonParameters).ObjectSpace = objectSpace;
+        //    ((CustomLogonParametersForStandardAuthentication)e.LogonParameters).ObjectSpace = objectSpace;
         //    e.ObjectSpace = objectSpace;
         //}
         //end

@@ -15,9 +15,9 @@ namespace CountableSystem.Web {
         private CountableSystem.Module.CountableSystemModule module3;
         private CountableSystem.Module.Web.CountableSystemAspNetModule module4;
         private DevExpress.ExpressApp.Security.SecurityModule securityModule1;
-        private DevExpress.ExpressApp.Security.SecurityStrategyComplex securityStrategyComplex1;
-        private DevExpress.ExpressApp.Security.AuthenticationStandard authenticationStandard1;
+        public SecurityStrategyComplex securityStrategyComplex1;
         private DevExpress.ExpressApp.Validation.ValidationModule validationModule;
+        public CS.Model.Security.Autentication autentication1;
         private DevExpress.ExpressApp.Validation.Web.ValidationAspNetModule validationAspNetModule;
 
         #region Default XAF configuration options (https://www.devexpress.com/kb=T501418)
@@ -83,29 +83,30 @@ namespace CountableSystem.Web {
         private void InitializeComponent() {
             this.module1 = new DevExpress.ExpressApp.SystemModule.SystemModule();
             this.module2 = new DevExpress.ExpressApp.Web.SystemModule.SystemAspNetModule();
+            this.validationModule = new DevExpress.ExpressApp.Validation.ValidationModule();
+            this.validationAspNetModule = new DevExpress.ExpressApp.Validation.Web.ValidationAspNetModule();
             this.module3 = new CountableSystem.Module.CountableSystemModule();
             this.module4 = new CountableSystem.Module.Web.CountableSystemAspNetModule();
             this.securityModule1 = new DevExpress.ExpressApp.Security.SecurityModule();
             this.securityStrategyComplex1 = new DevExpress.ExpressApp.Security.SecurityStrategyComplex();
-            this.securityStrategyComplex1.SupportNavigationPermissionsForTypes = false;
-            this.authenticationStandard1 = new DevExpress.ExpressApp.Security.AuthenticationStandard();
-            this.validationModule = new DevExpress.ExpressApp.Validation.ValidationModule();
-            this.validationAspNetModule = new DevExpress.ExpressApp.Validation.Web.ValidationAspNetModule();
+            this.autentication1 = new CS.Model.Security.Autentication();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
+            // 
+            // validationModule
+            // 
+            this.validationModule.AllowValidationDetailsAccess = true;
+            this.validationModule.IgnoreWarningAndInformationRules = false;
             // 
             // securityStrategyComplex1
             // 
-            this.securityStrategyComplex1.Authentication = this.authenticationStandard1;
-            this.securityStrategyComplex1.RoleType = typeof(DevExpress.Persistent.BaseImpl.PermissionPolicy.PermissionPolicyRole);
-            this.securityStrategyComplex1.UserType = typeof(DevExpress.Persistent.BaseImpl.PermissionPolicy.PermissionPolicyUser);
+            this.securityStrategyComplex1.AllowAnonymousAccess = false;
+            this.securityStrategyComplex1.Authentication = this.autentication1;
+            this.securityStrategyComplex1.RoleType = typeof(CS.Model.Security.RolUsuario);
+            this.securityStrategyComplex1.UserType = typeof(CS.Model.Security.Usuario);
             // 
-            // securityModule1
+            // autentication1
             // 
-            this.securityModule1.UserType = typeof(DevExpress.Persistent.BaseImpl.PermissionPolicy.PermissionPolicyUser);
-            // 
-            // authenticationStandard1
-            // 
-            this.authenticationStandard1.LogonParametersType = typeof(DevExpress.ExpressApp.Security.AuthenticationStandardLogonParameters);
+            this.autentication1.LogonParametersType = typeof(CS.Model.Security.CustomLogonParametersForStandardAuthentication);
             // 
             // CountableSystemAspNetApplication
             // 
@@ -113,12 +114,12 @@ namespace CountableSystem.Web {
             this.CheckCompatibilityType = DevExpress.ExpressApp.CheckCompatibilityType.DatabaseSchema;
             this.Modules.Add(this.module1);
             this.Modules.Add(this.module2);
+            this.Modules.Add(this.validationModule);
             this.Modules.Add(this.module3);
+            this.Modules.Add(this.validationAspNetModule);
             this.Modules.Add(this.module4);
             this.Modules.Add(this.securityModule1);
             this.Security = this.securityStrategyComplex1;
-            this.Modules.Add(this.validationModule);
-            this.Modules.Add(this.validationAspNetModule);
             this.DatabaseVersionMismatch += new System.EventHandler<DevExpress.ExpressApp.DatabaseVersionMismatchEventArgs>(this.CountableSystemAspNetApplication_DatabaseVersionMismatch);
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 

@@ -1,10 +1,11 @@
 ﻿using CS.Model.Utilities;
+using DevExpress.Persistent.Base;
 using DevExpress.Xpo;
 using System.ComponentModel;
 
 namespace CS.Model.Catalog
 {
-    //[DefaultClassOptions]
+    [DefaultClassOptions]
     ////[ImageName("BO_Contact")]
     //[NavigationItem("Catálogos")]
     //[ModelDefault("Caption", "Monedas")]

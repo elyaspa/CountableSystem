@@ -1,10 +1,11 @@
 ﻿using CS.Model.Utilities;
+using DevExpress.Persistent.Base;
 using DevExpress.Xpo;
 
 
 namespace CS.Model.Catalog
 {
-    //[DefaultClassOptions]
+    [DefaultClassOptions]
     //[NavigationItem("Catálogos")]
     //[ModelDefault("Caption", "Calendario Fiscal")]
     //[Persistent(Constantes.PrefijoTabla + "CALENDARIO_FISCAL")]

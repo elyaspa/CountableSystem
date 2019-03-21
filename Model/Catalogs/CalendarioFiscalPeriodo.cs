@@ -1,10 +1,11 @@
 ﻿using CS.Model.Utilities;
 using System;
 using DevExpress.Xpo;
-
+using DevExpress.Persistent.Base;
 
 namespace CS.Model.Catalog
 {
+    [DefaultClassOptions]
     //[ModelDefault("Caption", "Periodos")]
     //[Persistent(Constantes.PrefijoTabla + "CALENDARIO_FISCAL_PERIODOS")]
     //[DescripcionObjetos("Periodos del calendario fiscal")]

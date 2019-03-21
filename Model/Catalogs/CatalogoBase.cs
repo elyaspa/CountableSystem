@@ -1,10 +1,11 @@
 ﻿using CS.Model.Utilities;
+using DevExpress.Persistent.Base;
 using DevExpress.Xpo;
 using System.ComponentModel;
 
 namespace CS.Model.Catalog
 {
-    //[DefaultClassOptions]
+    [DefaultClassOptions]
     //[NavigationItem("Catálogos")]
     //[ModelDefault("Caption", "Catálogo Base")]
     //[Persistent(Constantes.PrefijoTabla + "CATALOGO_BASE")]
