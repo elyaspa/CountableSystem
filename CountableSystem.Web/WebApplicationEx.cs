@@ -6,16 +6,16 @@ using DevExpress.ExpressApp.Web;
 using CountableSystem.Module.Web;
 using CS.Model.Security;
 
-namespace DbChooser.Web {
-	public partial class RuntimeDbChooserAspNetApplication : WebApplication {
+namespace CountableSystem.Web {
+	public partial class CountableSystemAspNetApplication : WebApplication {
 		protected override void ReadSecuredLogonParameters() {
 			base.ReadSecuredLogonParameters(); // the "UserName" is restored in the base method.
 
-            string databaseName = HttpContext.Current.Request.Params.ToString();
-            if (!string.IsNullOrEmpty(databaseName))
-            {
-                ((IDatabaseNameParameter)SecuritySystem.LogonParameters).DatabaseName = databaseName;
-            }
+            //string databaseName = HttpContext.Current.Request.Params.ToString();
+            //if (!string.IsNullOrEmpty(databaseName))
+            //{
+            //    ((IDatabaseNameParameter)SecuritySystem.LogonParameters).DatabaseName = [WebChangeDatabaseController.DatabaseParameterName];
+            //}
         }
 		private bool canReadSecuredLogonParameters = true;
 		protected override bool CanReadSecuredLogonParameters() {
