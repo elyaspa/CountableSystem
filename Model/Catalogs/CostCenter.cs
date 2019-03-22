@@ -13,9 +13,9 @@ namespace CS.Model.Catalog
    //// [VisibleInReports(false)]
    // [DefaultProperty("Nombre")]
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-    public class CentroDeCosto : CompanyBaseObject
+    public class CostCenter : CompanyBaseObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
-        public CentroDeCosto(Session session)
+        public CostCenter(Session session)
             : base(session)
         {
         }
@@ -25,12 +25,12 @@ namespace CS.Model.Catalog
             // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
         }
 
-        string nombre;
+        string name;
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
-        public string Nombre
+        public string Name
         {
-            get { return nombre; }
-            set { SetPropertyValue(nameof(Nombre), ref nombre, value); }
+            get { return name; }
+            set { SetPropertyValue(nameof(Name), ref name, value); }
         }
 
     }

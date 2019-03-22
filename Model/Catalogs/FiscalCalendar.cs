@@ -5,7 +5,7 @@ using DevExpress.Xpo;
 
 namespace CS.Model.Catalog
 {
-   // [DefaultClassOptions]
+   [DefaultClassOptions]
     //[NavigationItem("Catálogos")]
     //[ModelDefault("Caption", "Calendario Fiscal")]
     //[Persistent(Constantes.PrefijoTabla + "CALENDARIO_FISCAL")]
@@ -13,9 +13,9 @@ namespace CS.Model.Catalog
     //[VisibleInReports(false)]
     //[DefaultProperty("Inicial")]
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-    public class CalendarioFiscal : CompanyBaseObject
+    public class FiscalCalendar : CompanyBaseObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
-        public CalendarioFiscal(Session session)
+        public FiscalCalendar(Session session)
             : base(session)
         {
         }
@@ -25,11 +25,11 @@ namespace CS.Model.Catalog
             // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
         }
 
-        int inicial;
-        public int Inicial
+        int initial;
+        public int Initial
         {
-            get { return inicial; }
-            set => SetPropertyValue(nameof(Inicial), ref inicial, value);
+            get { return initial; }
+            set => SetPropertyValue(nameof(Initial), ref initial, value);
         }
 
         int final;
@@ -40,12 +40,12 @@ namespace CS.Model.Catalog
         }
 
 
-        [Association("CalendarioFiscal-Periodos"),DevExpress.Xpo.Aggregated]
-        public XPCollection<CalendarioFiscalPeriodo> Periodos
+        [Association("FiscalCalendar-Cycle"),DevExpress.Xpo.Aggregated]
+        public XPCollection<FiscalCalendarCycle> Cycle
         {
             get
             {
-                return GetCollection<CalendarioFiscalPeriodo>(nameof(Periodos));
+                return GetCollection<FiscalCalendarCycle>(nameof(Cycle));
             }
         }
 

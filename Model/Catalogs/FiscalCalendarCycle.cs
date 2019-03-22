@@ -12,9 +12,9 @@ namespace CS.Model.Catalog
     //[VisibleInReports(false)]
     //[DefaultProperty("Item")]
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-    public class CalendarioFiscalPeriodo : AuditableBaseObject
+    public class FiscalCalendarCycle : AuditableBaseObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
-        public CalendarioFiscalPeriodo(Session session)
+        public FiscalCalendarCycle(Session session)
             : base(session)
         {
         }
@@ -24,12 +24,12 @@ namespace CS.Model.Catalog
             // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
         }
 
-        CalendarioFiscal calendarioFiscal;
-        [Association("CalendarioFiscal-Periodos")]
-        public CalendarioFiscal CalendarioFiscal
+        FiscalCalendar fiscalCalendar;
+        [Association("FiscalCalendar-Cycle")]
+        public FiscalCalendar FiscalCalendar
         {
-            get { return calendarioFiscal; }
-            set { SetPropertyValue(nameof(CalendarioFiscal), ref calendarioFiscal, value); }
+            get { return fiscalCalendar; }
+            set { SetPropertyValue(nameof(FiscalCalendar), ref fiscalCalendar, value); }
         }
 
         int item;
@@ -39,25 +39,25 @@ namespace CS.Model.Catalog
             set { SetPropertyValue(nameof(Item), ref item, value); }
         }
 
-        DateTime fechaInicial;
-        public DateTime FechaInicial
+        DateTime initialDate;
+        public DateTime InitialDate
         {
-            get { return fechaInicial; }
-            set { SetPropertyValue(nameof(FechaInicial), ref fechaInicial, value); }
+            get { return initialDate; }
+            set { SetPropertyValue(nameof(InitialDate), ref initialDate, value); }
         }
 
-        DateTime fechaFinal;
-        public DateTime FechaFinal
+        DateTime finalDate;
+        public DateTime FinalDate
         {
-            get { return fechaFinal; }
-            set { SetPropertyValue(nameof(FechaFinal), ref fechaFinal, value); }
+            get { return finalDate; }
+            set { SetPropertyValue(nameof(FinalDate), ref finalDate, value); }
         }
 
-        Enums.PeriodStatus estatus;
-        public Enums.PeriodStatus Estatus
+        Enums.PeriodStatus status;
+        public Enums.PeriodStatus Status
         {
-            get { return estatus; }
-            set { SetPropertyValue(nameof(Estatus), ref estatus, value); }
+            get { return status; }
+            set { SetPropertyValue(nameof(Status), ref status, value); }
         }
 
     }

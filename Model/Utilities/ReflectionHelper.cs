@@ -7,11 +7,11 @@ namespace CS.Model.Utilities
 {
     public sealed class ReflectionHelper
     {
-        public IEnumerable<Type> ObtenerDescendientesBase(Type Tipo)
+        public IEnumerable<Type> GetDescendantBase(Type Tipo)
         {
             return Tipo.Assembly.GetTypes().Where(t => t.BaseType == (Tipo));
         }
-        public IEnumerable<Type> ObtenerDescendientesAsignables(Assembly assembly, Type baseType)
+        public IEnumerable<Type> GetDescendantAssignable(Assembly assembly, Type baseType)
         {
             return assembly.GetTypes().Where(t => t != baseType && baseType.IsAssignableFrom(t));
         }

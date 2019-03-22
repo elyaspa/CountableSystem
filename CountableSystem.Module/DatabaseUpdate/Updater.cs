@@ -32,17 +32,17 @@ namespace CountableSystem.Module.DatabaseUpdate {
             CompanyUser sampleUser = ObjectSpace.FindObject<CompanyUser>(new BinaryOperator("UserName", "User"));
             if (sampleUser == null)
             {
-                sampleUser = ObjectSpace.CreateObject<CS.Model.Security.CompanyUser>();
+                sampleUser = ObjectSpace.CreateObject<CompanyUser>();
                 sampleUser.UserName = "User";
                 sampleUser.SetPassword("123");
             }
             PermissionPolicyRole defaultRole = CreateDefaultRole();
             sampleUser.Roles.Add(defaultRole);
 
-            CS.Model.Security.CompanyUser userAdmin = ObjectSpace.FindObject<CS.Model.Security.CompanyUser>(new BinaryOperator("UserName", "Admin"));
+            CS.Model.Security.CompanyUser userAdmin = ObjectSpace.FindObject<CompanyUser>(new BinaryOperator("UserName", "Admin"));
             if (userAdmin == null)
             {
-                userAdmin = ObjectSpace.CreateObject<CS.Model.Security.CompanyUser>();
+                userAdmin = ObjectSpace.CreateObject<CompanyUser>();
                 userAdmin.UserName = "Admin";
                 // Set a password if the standard authentication type is used
                 userAdmin.SetPassword("123");

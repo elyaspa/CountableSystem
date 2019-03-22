@@ -6,9 +6,9 @@ namespace CS.Model.Catalog
 {
     [DefaultClassOptions]
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-    public class TipoPartida : CompanyBaseObject
+    public class Correlative : CompanyBaseObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
-        public TipoPartida(Session session)
+        public Correlative(Session session)
             : base(session)
         {
         }
@@ -18,27 +18,26 @@ namespace CS.Model.Catalog
             // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
         }
 
-        string codigo;
-        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
-        public string Codigo
+        FiscalCalendarCycle cycle;
+        public FiscalCalendarCycle Cycle
         {
-            get { return codigo; }
-            set { SetPropertyValue(nameof(Codigo), ref codigo, value); }
+            get { return cycle; }
+            set { SetPropertyValue(nameof(Cycle), ref cycle, value); }
         }
 
-        string nombre;
-        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
-        public string Nombre
+        ItemType itemType;
+        public ItemType ItemType
         {
-            get { return nombre; }
-            set { SetPropertyValue(nameof(Nombre), ref nombre, value); }
+            get { return itemType; }
+            set { SetPropertyValue(nameof(ItemType), ref itemType, value); }
         }
 
-        Catalogo cuenta;
-        public Catalogo Cuenta
+        int number;
+        public int Number
         {
-            get { return cuenta; }
-            set { SetPropertyValue(nameof(Cuenta), ref cuenta, value); }
+            get { return number; }
+            set { SetPropertyValue(nameof(Number), ref number, value); }
         }
+
     }
 }
