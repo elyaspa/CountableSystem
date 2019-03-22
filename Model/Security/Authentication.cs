@@ -16,7 +16,7 @@ namespace CS.Model.Security
         }
     }
 
-    public class Autentication : AuthenticationStandard<PermissionPolicyUser, CustomLogonParametersForStandardAuthentication>
+    public class Authentication : AuthenticationStandard<PermissionPolicyUser, CustomLogonParametersForStandardAuthentication>
     {
         public static string AuthenticatedUserName;
 

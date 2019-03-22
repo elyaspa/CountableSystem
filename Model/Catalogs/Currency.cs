@@ -13,9 +13,9 @@ namespace CS.Model.Catalog
     //[DescripcionObjetos("Catálogo de monedas")]
     //[VisibleInReports(false)]
     //[DefaultProperty("Descripcion")]    // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-    public class Moneda : ObjetoBaseAuditable
+    public class Currency : AuditableBaseObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
-        public Moneda(Session session)
+        public Currency(Session session)
             : base(session)
         {
         }
@@ -25,38 +25,38 @@ namespace CS.Model.Catalog
             // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
         }
 
-        string descripcion;
+        string description;
         //[Size(SizeAttribute.DefaultStringMappingFieldSize)]
         //[ModelDefault("Caption", "Descripción")]
         //[Persistent("DESCRIPCION")]
         //[DescripcionObjetos("Descripción o nombre de la moneda")]
-        public string Descripcion
+        public string Description
         {
             get
             {
-                return descripcion;
+                return description;
             }
             set
             {
-                SetPropertyValue(nameof(Descripcion), ref descripcion, value);
+                SetPropertyValue(nameof(Description), ref description, value);
             }
         }
 
 
-        string simbolo;
+        string symbol;
         //[Size(SizeAttribute.DefaultStringMappingFieldSize)]
         //[ModelDefault("Caption", "Simbolo")]
         //[Persistent("SIMBOLO")]
         //[DescripcionObjetos("Caracter grafico que representa la moneda a nivel mundial")]
-        public string Simbolo
+        public string Symbol
         {
             get
             {
-                return simbolo;
+                return symbol;
             }
             set
             {
-                SetPropertyValue(nameof(Simbolo), ref simbolo, value);
+                SetPropertyValue(nameof(Symbol), ref symbol, value);
             }
         }
 

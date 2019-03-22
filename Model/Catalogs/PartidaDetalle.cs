@@ -6,7 +6,7 @@ namespace CS.Model.Catalog
 {
     [DefaultClassOptions]
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-    public class PartidaDetalle : ObjetoBaseAuditable
+    public class PartidaDetalle : AuditableBaseObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
         public PartidaDetalle(Session session)
             : base(session)

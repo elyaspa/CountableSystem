@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace CS.Model.Utilities
 {
-    public sealed class AyudanteDeReflection
+    public sealed class ReflectionHelper
     {
         public IEnumerable<Type> ObtenerDescendientesBase(Type Tipo)
         {

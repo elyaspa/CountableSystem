@@ -14,9 +14,9 @@ namespace CS.Model.Security
     //[VisibleInReports(false)]
     //[DefaultProperty("NombreCompleto")]
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-    public class Usuario : PermissionPolicyUser
+    public class CompanyUser : PermissionPolicyUser
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
-        public Usuario(Session session)
+        public CompanyUser(Session session)
             : base(session)
         {
         }
@@ -26,28 +26,28 @@ namespace CS.Model.Security
             // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
         }
 
-        string nombreCompleto;
+        string fullName;
         //[Size(SizeAttribute.DefaultStringMappingFieldSize)]
         //[Persistent("NOMBRE_COMPLETO")]
         //[DescripcionObjetos("Nombre completo del usuario")]
-        public string NombreCompleto
+        public string FullName
         {
             get
             {
-                return nombreCompleto;
+                return fullName;
             }
             set
             {
-                SetPropertyValue(nameof(NombreCompleto), ref nombreCompleto, value);
+                SetPropertyValue(nameof(FullName), ref fullName, value);
             }
         }
 
-        [Association("Usuario-Empresas")]
-        public XPCollection<Empresa> Empresas
+        [Association("User-Companies")]
+        public XPCollection<Company> Companies
         {
             get
             {
-                return GetCollection<Empresa>(nameof(Empresas));
+                return GetCollection<Company>(nameof(Companies));
             }
         }
 

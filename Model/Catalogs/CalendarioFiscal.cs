@@ -13,7 +13,7 @@ namespace CS.Model.Catalog
     //[VisibleInReports(false)]
     //[DefaultProperty("Inicial")]
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-    public class CalendarioFiscal : ObjetoBaseEmpresa
+    public class CalendarioFiscal : CompanyBaseObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
         public CalendarioFiscal(Session session)
             : base(session)

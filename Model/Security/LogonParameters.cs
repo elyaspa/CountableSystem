@@ -48,20 +48,20 @@ namespace CS.Model.Security
         public static void UpdateDatabaseName(XafApplication application, string databaseName)
         {
             ConnectionStringParser helper = new ConnectionStringParser(application.ConnectionString);
-            var conexion =helper.GetConnectionString();
+            var conection =helper.GetConnectionString();
            
             //if MSSqlServer 
-            if (conexion.Contains("MSSqlServer"))
+            if (conection.Contains("MSSqlServer"))
             {
                 helper.RemovePartByName("Initial Catalog");
                 application.ConnectionString = string.Format("Initial Catalog={0};{1}", databaseName, helper.GetConnectionString());
             }//if MysqlServer,dudas con lo del server
-            else if(conexion.Contains("MySql"))
+            else if(conection.Contains("MySql"))
             {
                 helper.RemovePartByName("Database");
                 application.ConnectionString = string.Format("Database={0};{1}", databaseName, helper.GetConnectionString());
             }//SQL Server ,dudas con lo del server
-            else if (conexion.Contains("Postgres"))
+            else if (conection.Contains("Postgres"))
             {
                 helper.RemovePartByName("Database");
                 application.ConnectionString = string.Format("Database={0};{1}", databaseName, helper.GetConnectionString());

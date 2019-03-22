@@ -7,9 +7,9 @@ using System;
 namespace CS.Model.Utilities
 {
     [NonPersistent]
-    public abstract class ObjetoBaseAuditable : BaseObject
+    public abstract class AuditableBaseObject : BaseObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
-        public ObjetoBaseAuditable(Session session)
+        public AuditableBaseObject(Session session)
             : base(session)
         {
         }
@@ -19,99 +19,99 @@ namespace CS.Model.Utilities
             //parametroDeAcceso = ObtenerParametrosAcceso();
             //this.Usuario = ObtenerObjetoUsuario(parametroDeAcceso);
             //this.CreadoPor = parametroDeAcceso.Usuario;
-            this.FechaCreacion = DateTime.Now;
+            this.CreationDate = DateTime.Now;
             // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
         }
 
-        string creadoPor;
+        string createdBy;
         //[Size(SizeAttribute.DefaultStringMappingFieldSize)]
         //[ModelDefault("Caption", "Creado Por")]
         //[Persistent("CREADO_POR")]
         //[DescripcionObjetos("Nombre Corto del usuario que crea el registro")]
         //[VisibleInDetailView(false), VisibleInListView(false), VisibleInLookupListView(false)]
         //[Appearance("Deshabilitar Creado Por - Objeto Base Auditable", Enabled = false)]
-        public string CreadoPor
+        public string CreatedBy
         {
             get
             {
-                return creadoPor;
+                return createdBy;
             }
             set
             {
-                SetPropertyValue(nameof(CreadoPor), ref creadoPor, value);
+                SetPropertyValue(nameof(CreatedBy), ref createdBy, value);
             }
         }
 
-        string modificadoPor;
+        string modifiedBy;
         //[Size(SizeAttribute.DefaultStringMappingFieldSize)]
         //[ModelDefault("Caption", "Modificado Por")]
         //[Persistent("MODIFICADO_POR")]
         //[DescripcionObjetos("Ultimo usuario que modificó el registro")]
         //[VisibleInDetailView(false), VisibleInListView(false), VisibleInLookupListView(false)]
         //[Appearance("Deshabilitar Modificado Por - Objeto Base Auditable", Enabled = false)]
-        public string ModificadoPor
+        public string ModifiedBy
         {
             get
             {
-                return modificadoPor;
+                return modifiedBy;
             }
             set
             {
-                SetPropertyValue(nameof(ModificadoPor), ref modificadoPor, value);
+                SetPropertyValue(nameof(ModifiedBy), ref modifiedBy, value);
             }
         }
 
-        DateTime fechaCreacion;
+        DateTime creationDate;
         //[ModelDefault("Caption", "Fecha de creación")]
         //[Persistent("FECHA_CREACION")]
         //[DescripcionObjetos("Fecha de creación del registro")]
         //[VisibleInDetailView(false), VisibleInListView(false), VisibleInLookupListView(false)]
         //[Appearance("Deshabilitar Fecha Creación - Objeto Base Auditable", Enabled = false)]
-        public DateTime FechaCreacion
+        public DateTime CreationDate
         {
             get
             {
-                return fechaCreacion;
+                return creationDate;
             }
             set
             {
-                SetPropertyValue(nameof(FechaCreacion), ref fechaCreacion, value);
+                SetPropertyValue(nameof(CreationDate), ref creationDate, value);
             }
         }
 
-        DateTime fechaModificacion;
+        DateTime modificationDate;
         //[ModelDefault("Caption", "Fecha de modificación")]
         //[Persistent("FECHA_MODIFICACION")]
         //[DescripcionObjetos("Fecha de modificación")]
         //[VisibleInDetailView(false), VisibleInListView(false), VisibleInLookupListView(false)]
         //[Appearance("Deshabilitar Fecha Modificación - Objeto Base Auditable", Enabled = false)]
-        public DateTime FechaModificacion
+        public DateTime ModificationDate
         {
             get
             {
-                return fechaModificacion;
+                return modificationDate;
             }
             set
             {
-                SetPropertyValue(nameof(FechaModificacion), ref fechaModificacion, value);
+                SetPropertyValue(nameof(ModificationDate), ref modificationDate, value);
             }
         }
 
-        Usuario usuario;
+        CompanyUser user;
         //[ModelDefault("Caption", "Usuario")]
         //[Persistent("USUARIO")]
         //[DescripcionObjetos("Objeto del usuario que creo o modifico el registro")]
         //[VisibleInDetailView(false), VisibleInListView(false), VisibleInLookupListView(false)]
         //[Appearance("Deshabilitar Usuario - Objeto Base Auditable", Enabled = false)]
-        public Usuario Usuario
+        public CompanyUser User
         {
             get
             {
-                return usuario;
+                return user;
             }
             set
             {
-                SetPropertyValue(nameof(Usuario), ref usuario, value);
+                SetPropertyValue(nameof(User), ref user,value);
             }
         }
 

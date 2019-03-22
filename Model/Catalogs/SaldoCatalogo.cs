@@ -6,7 +6,7 @@ namespace CS.Model.Catalog
 {
     [DefaultClassOptions]
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-    public class SaldoCatalogo : ObjetoBaseEmpresa
+    public class SaldoCatalogo : CompanyBaseObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
         public SaldoCatalogo(Session session)
             : base(session)

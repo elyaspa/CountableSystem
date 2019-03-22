@@ -31,7 +31,7 @@ namespace CountableSystem.Win {
 		public static CountableSystemWindowsFormsApplication CreateApplication() {
             CountableSystemWindowsFormsApplication winApplication = new CountableSystemWindowsFormsApplication();
 
-			((SecurityStrategyComplex)winApplication.Security).Authentication = new Autentication();
+			((SecurityStrategyComplex)winApplication.Security).Authentication = new Authentication();
 
 			//WinChangeDatabaseActiveDirectoryAuthentication activeDirectoryAuthentication = new WinChangeDatabaseActiveDirectoryAuthentication();
 			//activeDirectoryAuthentication.CreateUserAutomatically = true;

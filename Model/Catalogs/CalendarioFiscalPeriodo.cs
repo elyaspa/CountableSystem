@@ -12,7 +12,7 @@ namespace CS.Model.Catalog
     //[VisibleInReports(false)]
     //[DefaultProperty("Item")]
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-    public class CalendarioFiscalPeriodo : ObjetoBaseAuditable
+    public class CalendarioFiscalPeriodo : AuditableBaseObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
         public CalendarioFiscalPeriodo(Session session)
             : base(session)
@@ -53,8 +53,8 @@ namespace CS.Model.Catalog
             set { SetPropertyValue(nameof(FechaFinal), ref fechaFinal, value); }
         }
 
-        Enumeradores.EstatusPeriodo estatus;
-        public Enumeradores.EstatusPeriodo Estatus
+        Enums.PeriodStatus estatus;
+        public Enums.PeriodStatus Estatus
         {
             get { return estatus; }
             set { SetPropertyValue(nameof(Estatus), ref estatus, value); }

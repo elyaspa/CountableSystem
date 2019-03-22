@@ -5,9 +5,9 @@ namespace CS.Model.Utilities
 {
     [NonPersistent]
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-    public abstract class ObjetoBaseEmpresa : ObjetoBaseAuditable
+    public abstract class CompanyBaseObject : AuditableBaseObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
-        public ObjetoBaseEmpresa(Session session)
+        public CompanyBaseObject(Session session)
             : base(session)
         {
         }
@@ -18,19 +18,19 @@ namespace CS.Model.Utilities
             // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
         }
 
-        Empresa empresa;
+        Company company;
         //[ModelDefault("Caption", "Empresa")]
         //[Persistent("EMPRESA")]
         //[DescripcionObjetos("Referencia de la empresa propietaria del registro")]
         //[VisibleInDetailView(false), VisibleInListView(false), VisibleInLookupListView(false)]
         //[Appearance("Deshabilitar Empresa - Objeto Base Empresa", Enabled = false)]
-        public Empresa Empresa
+        public Company Company
         {
             get {
-                return empresa;
+                return company;
                     }
             set {
-                SetPropertyValue(nameof(Empresa), ref empresa, value);
+                SetPropertyValue(nameof(Company), ref company, value);
                  }
         }
 

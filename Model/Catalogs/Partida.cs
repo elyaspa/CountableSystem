@@ -7,7 +7,7 @@ namespace CS.Model.Catalog
 {
 
     [DefaultClassOptions]
-    public class Partida : ObjetoBaseEmpresa
+    public class Partida : CompanyBaseObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
         public Partida(Session session)
             : base(session)

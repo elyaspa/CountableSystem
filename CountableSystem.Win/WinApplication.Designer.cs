@@ -31,7 +31,7 @@
             this.validationWindowsFormsModule = new DevExpress.ExpressApp.Validation.Win.ValidationWindowsFormsModule();
             this.securityModule1 = new DevExpress.ExpressApp.Security.SecurityModule();
             this.securityStrategyComplex1 = new DevExpress.ExpressApp.Security.SecurityStrategyComplex();
-            this.autentication1 = new CS.Model.Security.Autentication();
+            this.autentication1 = new CS.Model.Security.Authentication();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // validationModule
@@ -43,8 +43,8 @@
             // 
             this.securityStrategyComplex1.AllowAnonymousAccess = false;
             this.securityStrategyComplex1.Authentication = this.autentication1;
-            this.securityStrategyComplex1.RoleType = typeof(CS.Model.Security.RolUsuario);
-            this.securityStrategyComplex1.UserType = typeof(CS.Model.Security.Usuario);
+            this.securityStrategyComplex1.RoleType = typeof(CS.Model.Security.UserRole);
+            this.securityStrategyComplex1.UserType = typeof(CS.Model.Security.CompanyUser);
             // 
             // autentication1
             // 
@@ -78,7 +78,7 @@
         private DevExpress.ExpressApp.Security.SecurityModule securityModule1;
         private DevExpress.ExpressApp.Validation.ValidationModule validationModule;
         private DevExpress.ExpressApp.Validation.Win.ValidationWindowsFormsModule validationWindowsFormsModule;
-        private CS.Model.Security.Autentication autentication1;
+        private CS.Model.Security.Authentication autentication1;
         public DevExpress.ExpressApp.Security.SecurityStrategyComplex securityStrategyComplex1;
         // private Module.BusinessObjects.Security.Autenticacion autenticacion1;
     }

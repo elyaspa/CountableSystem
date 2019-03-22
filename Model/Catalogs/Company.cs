@@ -15,9 +15,9 @@ namespace CS.Model.Catalog
     //[DefaultProperty("Nombre")]    // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
 
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-    public class Empresa : ObjetoBaseAuditable
+    public class Company : AuditableBaseObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
-        public Empresa(Session session)
+        public Company(Session session)
             : base(session)
         {
         }
@@ -27,44 +27,44 @@ namespace CS.Model.Catalog
             // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
         }
 
-        string codigo;
+        string code;
         //[Size(SizeAttribute.DefaultStringMappingFieldSize)]
         //[ModelDefault("Caption", "Codigo")]
         //[Persistent("CODIGO")]
         //[DescripcionObjetos("Codigo de la empresa")]
-        public string Codigo
+        public string Code
         {
-            get { return codigo; }
-            set { SetPropertyValue(nameof(Codigo), ref codigo, value); }
+            get { return code; }
+            set { SetPropertyValue(nameof(Code), ref code, value); }
         }
 
-        string nombre;
+        string name;
         //[Size(SizeAttribute.DefaultStringMappingFieldSize)]
         //[ModelDefault("Caption", "Nombre")]
         //[Persistent("NOMBRE")]
         //[DescripcionObjetos("Nombre de la empresa")]
-        public string Nombre
+        public string Name
         {
-            get { return nombre; }
-            set { SetPropertyValue(nameof(Nombre), ref nombre, value); }
+            get { return name; }
+            set { SetPropertyValue(nameof(Name), ref name, value); }
         }
 
-        Moneda moneda;
+        Currency currency;
         //[ModelDefault("Caption", "Moneda")]
         //[Persistent("MONEDA")]
         //[DescripcionObjetos("Moneda de las transacciones de la empresa")]
-        public Moneda Moneda
+        public Currency Currency
         {
-            get { return moneda; }
-            set { SetPropertyValue(nameof(Moneda), ref moneda, value); }
+            get { return currency; }
+            set { SetPropertyValue(nameof(Currency), ref currency, value); }
         }
 
-        [Association("Usuario-Empresas")]
-        public XPCollection<Usuario> Usuarios
+        [Association("User-Companies")]
+        public XPCollection<CompanyUser> Users
         {
             get
             {
-                return GetCollection<Usuario>(nameof(Usuarios));
+                return GetCollection<CompanyUser>(nameof(Users));
             }
         }
 

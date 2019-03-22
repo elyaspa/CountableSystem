@@ -3,10 +3,10 @@
 namespace CS.Model.Utilities
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Property)]
-    public class DescripcionObjetos : Attribute
+    public class ObjectsDescription : Attribute
     {
         private string _Text;
-        public DescripcionObjetos(string text)
+        public ObjectsDescription(string text)
         {
             _Text = text;
         }

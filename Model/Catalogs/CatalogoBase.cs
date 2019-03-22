@@ -13,7 +13,7 @@ namespace CS.Model.Catalog
    // [VisibleInReports(false)]
    // [DefaultProperty("Nombre")]
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
-    public class CatalogoBase : ObjetoBaseAuditable
+    public class CatalogoBase : AuditableBaseObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
         public CatalogoBase(Session session)
             : base(session)
@@ -48,8 +48,8 @@ namespace CS.Model.Catalog
             set { SetPropertyValue(nameof(Nombre), ref nombre, value); }
         }
 
-        Enumeradores.TipoSaldo tipoSaldo;
-        public Enumeradores.TipoSaldo TipoSaldo
+        Enums.CreditType tipoSaldo;
+        public Enums.CreditType TipoSaldo
         {
             get {return tipoSaldo; }
             set { SetPropertyValue(nameof(TipoSaldo), ref tipoSaldo, value); }
@@ -62,15 +62,15 @@ namespace CS.Model.Catalog
             set { SetPropertyValue(nameof(Nivel), ref nivel, value); }
         }
 
-        Enumeradores.TipoCuenta tipo;
-        public Enumeradores.TipoCuenta Tipo
+        Enums.AccountType tipo;
+        public Enums.AccountType Tipo
         {
             get { return tipo; }
             set { SetPropertyValue(nameof(Tipo), ref tipo, value); }
         }
 
-        Enumeradores.EstatusCuenta estatus;
-        public Enumeradores.EstatusCuenta Estatus
+        Enums.AccountStatus estatus;
+        public Enums.AccountStatus Estatus
         {
             get { return estatus; }
             set { SetPropertyValue(nameof(Estatus), ref estatus, value); }
@@ -83,8 +83,8 @@ namespace CS.Model.Catalog
             set { SetPropertyValue(nameof(Totalizadora), ref totalizadora, value); }
         }
 
-        Enumeradores.EfectoSaldo efecto;
-        public Enumeradores.EfectoSaldo Efecto
+        Enums.CreditImpact efecto;
+        public Enums.CreditImpact Efecto
         {
             get { return efecto; }
             set { SetPropertyValue(nameof(Efecto), ref efecto, value); }

@@ -17,7 +17,7 @@ namespace CountableSystem.Web {
         private DevExpress.ExpressApp.Security.SecurityModule securityModule1;
         public SecurityStrategyComplex securityStrategyComplex1;
         private DevExpress.ExpressApp.Validation.ValidationModule validationModule;
-        public CS.Model.Security.Autentication autentication1;
+        public CS.Model.Security.Authentication autentication1;
         private DevExpress.ExpressApp.Validation.Web.ValidationAspNetModule validationAspNetModule;
 
         #region Default XAF configuration options (https://www.devexpress.com/kb=T501418)
@@ -89,7 +89,7 @@ namespace CountableSystem.Web {
             this.module4 = new CountableSystem.Module.Web.CountableSystemAspNetModule();
             this.securityModule1 = new DevExpress.ExpressApp.Security.SecurityModule();
             this.securityStrategyComplex1 = new DevExpress.ExpressApp.Security.SecurityStrategyComplex();
-            this.autentication1 = new CS.Model.Security.Autentication();
+            this.autentication1 = new CS.Model.Security.Authentication();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // validationModule
@@ -101,8 +101,8 @@ namespace CountableSystem.Web {
             // 
             this.securityStrategyComplex1.AllowAnonymousAccess = false;
             this.securityStrategyComplex1.Authentication = this.autentication1;
-            this.securityStrategyComplex1.RoleType = typeof(CS.Model.Security.RolUsuario);
-            this.securityStrategyComplex1.UserType = typeof(CS.Model.Security.Usuario);
+            this.securityStrategyComplex1.RoleType = typeof(CS.Model.Security.UserRole);
+            this.securityStrategyComplex1.UserType = typeof(CS.Model.Security.CompanyUser);
             // 
             // autentication1
             // 

@@ -29,20 +29,20 @@ namespace CountableSystem.Module.DatabaseUpdate {
             //    theObject.Name = name;
             //}
 
-            Usuario sampleUser = ObjectSpace.FindObject<Usuario>(new BinaryOperator("UserName", "User"));
+            CompanyUser sampleUser = ObjectSpace.FindObject<CompanyUser>(new BinaryOperator("UserName", "User"));
             if (sampleUser == null)
             {
-                sampleUser = ObjectSpace.CreateObject<Usuario>();
+                sampleUser = ObjectSpace.CreateObject<CS.Model.Security.CompanyUser>();
                 sampleUser.UserName = "User";
                 sampleUser.SetPassword("123");
             }
             PermissionPolicyRole defaultRole = CreateDefaultRole();
             sampleUser.Roles.Add(defaultRole);
 
-            Usuario userAdmin = ObjectSpace.FindObject<Usuario>(new BinaryOperator("UserName", "Admin"));
+            CS.Model.Security.CompanyUser userAdmin = ObjectSpace.FindObject<CS.Model.Security.CompanyUser>(new BinaryOperator("UserName", "Admin"));
             if (userAdmin == null)
             {
-                userAdmin = ObjectSpace.CreateObject<Usuario>();
+                userAdmin = ObjectSpace.CreateObject<CS.Model.Security.CompanyUser>();
                 userAdmin.UserName = "Admin";
                 // Set a password if the standard authentication type is used
                 userAdmin.SetPassword("123");
@@ -51,7 +51,7 @@ namespace CountableSystem.Module.DatabaseUpdate {
             PermissionPolicyRole adminRole = ObjectSpace.FindObject<PermissionPolicyRole>(new BinaryOperator("Name", "Administrators"));
             if (adminRole == null)
             {
-                adminRole = ObjectSpace.CreateObject<RolUsuario>();
+                adminRole = ObjectSpace.CreateObject<UserRole>();
                 adminRole.Name = "Administrators";
             }
             adminRole.IsAdministrative = true;
