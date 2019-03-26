@@ -8,6 +8,10 @@ using DevExpress.ExpressApp.Xpo;
 using CS.Model;
 using CS.Model.Utilities;
 using CS.Model.Security;
+using CS.Model.Catalog;
+using DevExpress.Persistent.Base;
+using System.Linq;
+using DevExpress.Xpo;
 
 namespace CountableSystem.Module
 {
@@ -47,6 +51,16 @@ namespace CountableSystem.Module
         public override void CustomizeTypesInfo(ITypesInfo typesInfo) {
             base.CustomizeTypesInfo(typesInfo);
             CalculatedPersistentAliasHelper.CustomizeTypesInfo(typesInfo);
+            ITypeInfo BaseCatalogTypeInfo =typesInfo.FindTypeInfo(typeof(BaseCatalog));
+            if (BaseCatalogTypeInfo!=null){
+                BaseCatalogTypeInfo.AddAttribute(new DefaultClassOptionsAttribute());
+                var Oid = BaseCatalogTypeInfo.OwnMembers.Where(m => m.IsKey).FirstOrDefault();
+                if (Oid != null)
+                {
+                    Oid.AddAttribute(new KeyAttribute(true));
+                }
+            }
+            
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using CS.Model.Security;
-using DevExpress.Persistent.BaseImpl;
+
 using DevExpress.Xpo;
 
 using System;
@@ -7,7 +7,7 @@ using System;
 namespace CS.Model.Utilities
 {
     [NonPersistent]
-    public abstract class AuditableBaseObject : BaseObject
+    public abstract class AuditableBaseObject : XPObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
         public AuditableBaseObject(Session session)
             : base(session)
