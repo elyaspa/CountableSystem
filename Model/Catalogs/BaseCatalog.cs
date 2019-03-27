@@ -33,7 +33,7 @@ namespace CS.Model.Catalog
         }
 
         string accountNumber;
-        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        //[Size(SizeAttribute.DefaultStringMappingFieldSize)]
         public string AccountNumber
         {
             get { return accountNumber; }
@@ -41,7 +41,7 @@ namespace CS.Model.Catalog
         }
 
         string name;
-        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        //[Size(SizeAttribute.DefaultStringMappingFieldSize)]
         public string Name
         {
             get { return name; }

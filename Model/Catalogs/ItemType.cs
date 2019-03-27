@@ -19,7 +19,7 @@ namespace CS.Model.Catalog
         }
 
         string code;
-        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        //[Size(SizeAttribute.DefaultStringMappingFieldSize)]
         public string Code
         {
             get { return code; }
@@ -27,7 +27,7 @@ namespace CS.Model.Catalog
         }
 
         string name;
-        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+       // [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         public string Name
         {
             get { return name; }

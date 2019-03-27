@@ -49,7 +49,7 @@ namespace CS.Model.Catalog
         }
 
 
-        [Size(250)]
+        //[Size(250)]
         public string Concept
         {
             get { return concept; }

@@ -26,7 +26,7 @@ namespace CS.Model.Catalog
         }
 
         string name;
-        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+       // [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         public string Name
         {
             get { return name; }

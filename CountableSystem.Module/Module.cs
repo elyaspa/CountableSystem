@@ -14,6 +14,8 @@ using System.Linq;
 using DevExpress.Xpo;
 using DevExpress.ExpressApp.Model;
 using System.ComponentModel;
+using DevExpress.ExpressApp.ConditionalAppearance;
+using System.Runtime.Serialization;
 
 namespace CountableSystem.Module
 {
@@ -66,7 +68,13 @@ namespace CountableSystem.Module
             ITypeInfo ItemTypeInfo = typesInfo.FindTypeInfo(typeof(Item));
             ITypeInfo ItemDetailTypeInfo = typesInfo.FindTypeInfo(typeof(ItemDetail));
             ITypeInfo ItemTypeTypeInfo = typesInfo.FindTypeInfo(typeof(ItemType));
-
+            ITypeInfo CompanyUserTypeInfo = typesInfo.FindTypeInfo(typeof(CompanyUser));
+            ITypeInfo CustomLogonTypeInfo = typesInfo.FindTypeInfo(typeof(CustomLogonParametersForStandardAuthentication));
+            ITypeInfo UserRoleTypeInfo = typesInfo.FindTypeInfo(typeof(UserRole));
+            ITypeInfo AuditableBaseTypeInfo = typesInfo.FindTypeInfo(typeof(AuditableBaseObject));
+            ITypeInfo CompanyBaseTypeInfo = typesInfo.FindTypeInfo(typeof(CompanyBaseObject));
+            ITypeInfo ConstsTypeInfo = typesInfo.FindTypeInfo(typeof(Consts)); 
+            ITypeInfo ObjectsDescriptionTypeInfo = typesInfo.FindTypeInfo(typeof(ObjectsDescription));
             //BaseCatalog
             if (BaseCatalogTypeInfo!=null){
                 BaseCatalogTypeInfo.AddAttribute(new DefaultClassOptionsAttribute());
@@ -108,10 +116,12 @@ namespace CountableSystem.Module
                 CompanyTypeInfo.AddAttribute(new ObjectsDescription("Companies Catalog"));
                 CompanyTypeInfo.AddAttribute(new VisibleInReportsAttribute(false));
                 CompanyTypeInfo.AddAttribute(new DefaultPropertyAttribute("Name"));
+                //CompanyTypeInfo.AddAttribute(new AssociationAttribute("User-Companies",typeof(CompanyUser)));
                 IMemberInfo NameMemberInfo = CompanyTypeInfo.OwnMembers.Where(m => m.Name == "Name").FirstOrDefault();
                 IMemberInfo CodeMemberInfo = CompanyTypeInfo.OwnMembers.Where(m => m.Name == "Code").FirstOrDefault();
                 IMemberInfo CurrencyMemberInfo = CompanyTypeInfo.OwnMembers.Where(m => m.Name == "Currency").FirstOrDefault();
-                if (NameMemberInfo != null && CodeMemberInfo != null && CurrencyMemberInfo != null)
+                IMemberInfo UsersMemberInfo = CompanyTypeInfo.OwnMembers.Where(m => m.Name == "Users").FirstOrDefault();
+                if (NameMemberInfo != null && CodeMemberInfo != null && CurrencyMemberInfo != null && UsersMemberInfo!=null)
                 {
                     NameMemberInfo.AddAttribute(new SizeAttribute(SizeAttribute.DefaultStringMappingFieldSize));
                     NameMemberInfo.AddAttribute(new ModelDefaultAttribute("Caption", "Name"));
@@ -126,6 +136,8 @@ namespace CountableSystem.Module
                     CurrencyMemberInfo.AddAttribute(new ModelDefaultAttribute("Caption", "Currency"));
                     CurrencyMemberInfo.AddAttribute(new PersistentAttribute("CURRENCY"));
                     CurrencyMemberInfo.AddAttribute(new ObjectsDescription("Company Transactions Currency"));
+                    //
+                    UsersMemberInfo.AddAttribute(new AssociationAttribute("User-Companies", typeof(CompanyUser)));
                 }
                 
             }
@@ -168,7 +180,7 @@ namespace CountableSystem.Module
                     DescriptionMemberInfo.AddAttribute(new SizeAttribute(SizeAttribute.DefaultStringMappingFieldSize));
                     DescriptionMemberInfo.AddAttribute(new ModelDefaultAttribute("Caption", "Description"));
                     DescriptionMemberInfo.AddAttribute(new PersistentAttribute("DESCRIPTION"));
-                    DescriptionMemberInfo.AddAttribute(new ObjectsDescription("Description or Currecny Name"));
+                    DescriptionMemberInfo.AddAttribute(new ObjectsDescription("Description or Currency Name"));
                     //
                    SymbolMemberInfo.AddAttribute(new SizeAttribute(SizeAttribute.DefaultStringMappingFieldSize));
                    SymbolMemberInfo.AddAttribute(new ModelDefaultAttribute("Caption", "Symbol"));
@@ -231,6 +243,160 @@ namespace CountableSystem.Module
                     NameMemberInfo.AddAttribute(new SizeAttribute(SizeAttribute.DefaultStringMappingFieldSize));
                     CodeMemberInfo.AddAttribute(new SizeAttribute(SizeAttribute.DefaultStringMappingFieldSize));
                 }
+            }
+            //CompanyUser
+            if (CompanyUserTypeInfo!=null)
+            {
+                
+                CompanyUserTypeInfo.AddAttribute(new DefaultClassOptionsAttribute());
+                CompanyUserTypeInfo.AddAttribute(new NavigationItemAttribute("Security"));
+                CompanyUserTypeInfo.AddAttribute(new ModelDefaultAttribute("Caption", "Users"));
+                CompanyUserTypeInfo.AddAttribute(new PersistentAttribute(Consts.TablePrefix + "USER"));
+                CompanyUserTypeInfo.AddAttribute(new ObjectsDescription("System Users"));
+                CompanyUserTypeInfo.AddAttribute(new VisibleInReportsAttribute(false));
+                CompanyUserTypeInfo.AddAttribute(new DefaultPropertyAttribute("FullName"));
+                CompanyUserTypeInfo.AddAttribute(new ImageNameAttribute("BO_Contact"));
+                IMemberInfo FullNameMemberInfo = ItemTypeTypeInfo.OwnMembers.Where(m => m.Name == "Name").FirstOrDefault();
+                IMemberInfo CompaniesMemberInfo = ItemTypeTypeInfo.OwnMembers.Where(m => m.Name == "Companies").FirstOrDefault();
+
+
+                if (FullNameMemberInfo != null && CompaniesMemberInfo!=null)
+                {
+                    FullNameMemberInfo.AddAttribute(new SizeAttribute(SizeAttribute.DefaultStringMappingFieldSize));
+                    FullNameMemberInfo.AddAttribute(new PersistentAttribute("FULL_NAME"));
+                    FullNameMemberInfo.AddAttribute(new ObjectsDescription("User Full Name"));
+                    CompaniesMemberInfo.AddAttribute(new AssociationAttribute("User-Companies", typeof(Company)));
+                }
+            }
+            //CustomLogonParametersForStandardAuthentication
+            if(CustomLogonTypeInfo!=null)
+            {
+                CustomLogonTypeInfo.AddAttribute(new DomainComponentAttribute());
+            }
+            //User Role
+            if (UserRoleTypeInfo!=null)
+            {
+               UserRoleTypeInfo.AddAttribute(new DefaultClassOptionsAttribute());
+               UserRoleTypeInfo.AddAttribute(new NavigationItemAttribute("Security"));
+               UserRoleTypeInfo.AddAttribute(new ModelDefaultAttribute("Caption", "Users Roles"));
+               UserRoleTypeInfo.AddAttribute(new PersistentAttribute(Consts.TablePrefix + "USER_ROLE"));
+               UserRoleTypeInfo.AddAttribute(new ObjectsDescription("System Users Roles"));                          
+               UserRoleTypeInfo.AddAttribute(new ImageNameAttribute("BO_Contact"));
+            }
+            //AuditableBaseObject
+            if (AuditableBaseTypeInfo != null)
+            {
+                AuditableBaseTypeInfo.AddAttribute(new NonPersistentAttribute());
+                IMemberInfo CreatedByMemberInfo = AuditableBaseTypeInfo.OwnMembers.Where(m => m.Name == "CreatedBy").FirstOrDefault();
+                IMemberInfo ModifiedByMemberInfo = AuditableBaseTypeInfo.OwnMembers.Where(m => m.Name == "ModifiedBy").FirstOrDefault();
+                IMemberInfo CreationDateMemberInfo = AuditableBaseTypeInfo.OwnMembers.Where(m => m.Name == "CreationDate").FirstOrDefault();
+                IMemberInfo ModificationDateMemberInfo = AuditableBaseTypeInfo.OwnMembers.Where(m => m.Name == "ModificationDate").FirstOrDefault();
+                IMemberInfo UserMemberInfo = AuditableBaseTypeInfo.OwnMembers.Where(m => m.Name == "User").FirstOrDefault();
+                if (CreatedByMemberInfo != null && ModifiedByMemberInfo != null && CreationDateMemberInfo != null && ModificationDateMemberInfo != null && UserMemberInfo != null)
+                {
+                    CreatedByMemberInfo.AddAttribute(new SizeAttribute(SizeAttribute.DefaultStringMappingFieldSize));
+                    CreatedByMemberInfo.AddAttribute(new ModelDefaultAttribute("Caption", "Created By"));
+                    CreatedByMemberInfo.AddAttribute(new PersistentAttribute("CREATED_BY"));
+                    CreatedByMemberInfo.AddAttribute(new ObjectsDescription("Name of the record creator "));
+                    CreatedByMemberInfo.AddAttribute(new VisibleInDetailViewAttribute(false));
+                    CreatedByMemberInfo.AddAttribute(new VisibleInListViewAttribute(false));
+                    CreatedByMemberInfo.AddAttribute(new VisibleInLookupListViewAttribute(false));
+                    AppearanceAttribute attribute=new AppearanceAttribute("Disable CreatedBy");
+                    attribute.TargetItems= "CreatedBy";
+                    attribute.Enabled=false;
+                    CreatedByMemberInfo.AddAttribute(attribute);
+                    //
+                   ModifiedByMemberInfo.AddAttribute(new SizeAttribute(SizeAttribute.DefaultStringMappingFieldSize));
+                   ModifiedByMemberInfo.AddAttribute(new ModelDefaultAttribute("Caption", "Modified By"));
+                   ModifiedByMemberInfo.AddAttribute(new PersistentAttribute("MODIFIED_BY"));
+                   ModifiedByMemberInfo.AddAttribute(new ObjectsDescription("Last user that modified the record"));
+                   ModifiedByMemberInfo.AddAttribute(new VisibleInDetailViewAttribute(false));
+                   ModifiedByMemberInfo.AddAttribute(new VisibleInListViewAttribute(false));
+                   ModifiedByMemberInfo.AddAttribute(new VisibleInLookupListViewAttribute(false));
+                   AppearanceAttribute attribute2 = new AppearanceAttribute("Disable ModifiedBy");
+                   attribute2.TargetItems = "ModifiedBy";
+                   attribute2.Enabled = false;
+                   ModifiedByMemberInfo.AddAttribute(attribute2);
+                    //
+                   
+                    CreationDateMemberInfo.AddAttribute(new ModelDefaultAttribute("Caption", "Creation Date"));
+                    CreationDateMemberInfo.AddAttribute(new PersistentAttribute("CREATION_DATE"));
+                    CreationDateMemberInfo.AddAttribute(new ObjectsDescription("Record's Creation Date"));
+                    CreationDateMemberInfo.AddAttribute(new VisibleInDetailViewAttribute(false));
+                    CreationDateMemberInfo.AddAttribute(new VisibleInListViewAttribute(false));
+                    CreationDateMemberInfo.AddAttribute(new VisibleInLookupListViewAttribute(false));
+                    AppearanceAttribute attribute3 = new AppearanceAttribute("Disable CreationDate");
+                    attribute3.TargetItems = "CreationDate";
+                    attribute3.Enabled = false;
+                    CreationDateMemberInfo.AddAttribute(attribute3);
+                    //
+                   ModificationDateMemberInfo.AddAttribute(new ModelDefaultAttribute("Caption", "Modification Date"));
+                   ModificationDateMemberInfo.AddAttribute(new PersistentAttribute("MODIFICATION_DATE"));
+                   ModificationDateMemberInfo.AddAttribute(new ObjectsDescription("Record's Creation Date"));
+                   ModificationDateMemberInfo.AddAttribute(new VisibleInDetailViewAttribute(false));
+                   ModificationDateMemberInfo.AddAttribute(new VisibleInListViewAttribute(false));
+                   ModificationDateMemberInfo.AddAttribute(new VisibleInLookupListViewAttribute(false));
+                   AppearanceAttribute attribute4 = new AppearanceAttribute("Disable ModificationDate");
+                   attribute4.TargetItems = "ModificationDate";
+                   attribute4.Enabled = false;
+                   ModificationDateMemberInfo.AddAttribute(attribute4);
+                    //
+                  UserMemberInfo.AddAttribute(new ModelDefaultAttribute("Caption", "User"));
+                  UserMemberInfo.AddAttribute(new PersistentAttribute("USER"));
+                  UserMemberInfo.AddAttribute(new ObjectsDescription("User that Create or Modify the Record"));
+                  UserMemberInfo.AddAttribute(new VisibleInDetailViewAttribute(false));
+                  UserMemberInfo.AddAttribute(new VisibleInListViewAttribute(false));
+                  UserMemberInfo.AddAttribute(new VisibleInLookupListViewAttribute(false));
+                  AppearanceAttribute attribute5 = new AppearanceAttribute("Disable User");
+                  attribute5.TargetItems = "User";
+                  attribute5.Enabled = false;
+                  UserMemberInfo.AddAttribute(attribute5);
+                }
+            }
+            //CompanyBaseObject
+            if (CompanyBaseTypeInfo!=null)
+            {
+                CompanyBaseTypeInfo.AddAttribute(new NonPersistentAttribute());
+                IMemberInfo CompanyBaseMemberInfo = AuditableBaseTypeInfo.OwnMembers.Where(m => m.Name == "Company").FirstOrDefault();
+                if (CompanyBaseMemberInfo!=null)
+                {
+                    CompanyBaseMemberInfo.AddAttribute(new ModelDefaultAttribute("Caption", "Company"));
+                    CompanyBaseMemberInfo.AddAttribute(new PersistentAttribute("COMPANY"));
+                    CompanyBaseMemberInfo.AddAttribute(new ObjectsDescription("Reference to the Owner Company  of the Record"));
+                    CompanyBaseMemberInfo.AddAttribute(new VisibleInDetailViewAttribute(false));
+                    CompanyBaseMemberInfo.AddAttribute(new VisibleInListViewAttribute(false));
+                    CompanyBaseMemberInfo.AddAttribute(new VisibleInLookupListViewAttribute(false));
+                    AppearanceAttribute attribute6= new AppearanceAttribute("Disable Company");
+                    attribute6.TargetItems = "Company";
+                    attribute6.Enabled = false;
+                    CompanyBaseMemberInfo.AddAttribute(attribute6);
+                }
+
+            }
+            //Consts
+            if (ConstsTypeInfo!=null)
+            {
+                ConstsTypeInfo.AddAttribute(new DataContractAttribute());
+                IMemberInfo TablePrefixMemberInfo=ConstsTypeInfo.OwnMembers.Where(m => m.Name =="TablePrefix").FirstOrDefault();
+                IMemberInfo TwoDecimalNumericMaskMemberInfo = ConstsTypeInfo.OwnMembers.Where(m => m.Name == "TwoDecimalNumericMask").FirstOrDefault();
+                IMemberInfo SixDecimalNumericMaskxMemberInfo = ConstsTypeInfo.OwnMembers.Where(m => m.Name == "SixDecimalNumericMask").FirstOrDefault();
+                IMemberInfo NoDecimalNumericMaskMemberInfo = ConstsTypeInfo.OwnMembers.Where(m => m.Name == "NoDecimalNumericMask").FirstOrDefault();
+                if (TablePrefixMemberInfo!=null && TwoDecimalNumericMaskMemberInfo != null && SixDecimalNumericMaskxMemberInfo != null && NoDecimalNumericMaskMemberInfo != null)
+                {
+                    TablePrefixMemberInfo.AddAttribute(new DataMemberAttribute());
+                    TwoDecimalNumericMaskMemberInfo.AddAttribute(new DataMemberAttribute());
+                    SixDecimalNumericMaskxMemberInfo.AddAttribute(new DataMemberAttribute());
+                    NoDecimalNumericMaskMemberInfo.AddAttribute(new DataMemberAttribute());
+
+
+
+                }
+            }
+            //ObjectDescription
+            if (ObjectsDescriptionTypeInfo!=null)
+            {
+                ObjectsDescriptionTypeInfo.AddAttribute(new AttributeUsageAttribute(AttributeTargets.Class));
+                ObjectsDescriptionTypeInfo.AddAttribute(new AttributeUsageAttribute(AttributeTargets.Property));
             }
         }
     }

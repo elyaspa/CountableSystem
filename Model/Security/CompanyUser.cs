@@ -42,7 +42,7 @@ namespace CS.Model.Security
             }
         }
 
-        [Association("User-Companies")]
+       // [Association("User-Companies")]
         public XPCollection<Company> Companies
         {
             get

@@ -12,7 +12,7 @@ namespace CS.Model.Security
     {
         string DatabaseName { get; set; }
     }
-    [DomainComponent]
+   // [DomainComponent]
     public class CustomLogonParametersForStandardAuthentication : AuthenticationStandardLogonParameters, IDatabaseNameParameter
     {
        

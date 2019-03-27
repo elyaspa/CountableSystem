@@ -59,7 +59,7 @@ namespace CS.Model.Catalog
             set { SetPropertyValue(nameof(Currency), ref currency, value); }
         }
 
-        [Association("User-Companies")]
+       // [Association("User-Companies")]
         public XPCollection<CompanyUser> Users
         {
             get

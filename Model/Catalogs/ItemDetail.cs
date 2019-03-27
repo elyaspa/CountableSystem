@@ -40,7 +40,7 @@ namespace CS.Model.Catalog
         }
 
 
-        [Size(SizeAttribute.Unlimited)]
+       // [Size(SizeAttribute.Unlimited)]
         public string Concept
         {
             get { return concept; }
