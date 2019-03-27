@@ -6,7 +6,7 @@ using DevExpress.Xpo;
 namespace CS.Model.Catalog
 {
 
-    [DefaultClassOptions]
+    //[DefaultClassOptions]
     public class Item : CompanyBaseObject
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
         public Item(Session session)

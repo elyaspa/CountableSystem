@@ -6,7 +6,7 @@ using System.ComponentModel;
 
 namespace CS.Model.Catalog
 {
-    [DefaultClassOptions]
+    //[DefaultClassOptions]
     //[NavigationItem("Catálogos")]
     //[ModelDefault("Caption", "Empresas")]
     //[Persistent(Constantes.PrefijoTabla + "EMPRESA")]

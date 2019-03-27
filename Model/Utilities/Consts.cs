@@ -7,7 +7,7 @@ namespace CS.Model.Utilities
     public sealed class Consts
     {
         [DataMember]
-        public const string TablePrefix = "SCT_";
+        public const string TablePrefix = "CS_";
         [DataMember]
         public const string TwoDecimalNumericMask = "#,###,##0.00";
         [DataMember]

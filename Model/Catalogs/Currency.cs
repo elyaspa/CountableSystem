@@ -5,7 +5,7 @@ using System.ComponentModel;
 
 namespace CS.Model.Catalog
 {
-    [DefaultClassOptions]
+    //[DefaultClassOptions]
     ////[ImageName("BO_Contact")]
     //[NavigationItem("Catálogos")]
     //[ModelDefault("Caption", "Monedas")]

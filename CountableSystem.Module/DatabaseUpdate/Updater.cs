@@ -36,7 +36,7 @@ namespace CountableSystem.Module.DatabaseUpdate {
                 sampleUser.UserName = "User";
                 sampleUser.SetPassword("123");
             }
-            PermissionPolicyRole defaultRole = CreateDefaultRole();
+            UserRole defaultRole = CreateDefaultRole();
             sampleUser.Roles.Add(defaultRole);
 
             CS.Model.Security.CompanyUser userAdmin = ObjectSpace.FindObject<CompanyUser>(new BinaryOperator("UserName", "Admin"));
@@ -48,7 +48,7 @@ namespace CountableSystem.Module.DatabaseUpdate {
                 userAdmin.SetPassword("123");
             }
             // If a role with the Administrators name doesn't exist in the database, create this role
-            PermissionPolicyRole adminRole = ObjectSpace.FindObject<PermissionPolicyRole>(new BinaryOperator("Name", "Administrators"));
+            UserRole adminRole = ObjectSpace.FindObject<UserRole>(new BinaryOperator("Name", "Administrators"));
             if (adminRole == null)
             {
                 adminRole = ObjectSpace.CreateObject<UserRole>();
@@ -97,10 +97,10 @@ namespace CountableSystem.Module.DatabaseUpdate {
             //    RenameColumn("DomainObject1Table", "OldColumnName", "NewColumnName");
             //}
         }
-        private PermissionPolicyRole CreateDefaultRole() {
-            PermissionPolicyRole defaultRole = ObjectSpace.FindObject<PermissionPolicyRole>(new BinaryOperator("Name", "Default"));
+        private UserRole CreateDefaultRole() {
+            UserRole defaultRole = ObjectSpace.FindObject<UserRole>(new BinaryOperator("Name", "Default"));
             if(defaultRole == null) {
-                defaultRole = ObjectSpace.CreateObject<PermissionPolicyRole>();
+                defaultRole = ObjectSpace.CreateObject<UserRole>();
                 defaultRole.Name = "Default";
 
 				defaultRole.AddObjectPermission<PermissionPolicyUser>(SecurityOperations.Read, "[Oid] = CurrentUserId()", SecurityPermissionState.Allow);
