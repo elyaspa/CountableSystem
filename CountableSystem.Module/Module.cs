@@ -272,7 +272,7 @@ namespace CountableSystem.Module
                 if (ConceptMemberInfo != null)
                 {
                     ConceptMemberInfo.AddAttribute(new SizeAttribute(SizeAttribute.Unlimited));
-                    ItemMemberInfo.AddAttribute(new AssociationAttribute("Item-ItemDetails",typeof(Item)),true,);
+                    ItemMemberInfo.AddAttribute(new AssociationAttribute("Item-ItemDetails",typeof(Item)),true);
                 }
             }
             //ItemType or InvoiceType
