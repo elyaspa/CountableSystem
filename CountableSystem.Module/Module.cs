@@ -137,9 +137,33 @@ namespace CountableSystem.Module
                     CurrencyMemberInfo.AddAttribute(new PersistentAttribute("CURRENCY"));
                     CurrencyMemberInfo.AddAttribute(new ObjectsDescription("Company Transactions Currency"));
                     //
-                    UsersMemberInfo.AddAttribute(new AssociationAttribute("User-Companies", typeof(CompanyUser)));
+                    UsersMemberInfo.AddAttribute(new AssociationAttribute("Company-User",typeof(CompanyUser)),true);
                 }
                 
+            }
+            //CompanyUser
+            if (CompanyUserTypeInfo != null)
+            {
+
+                CompanyUserTypeInfo.AddAttribute(new DefaultClassOptionsAttribute());
+                CompanyUserTypeInfo.AddAttribute(new NavigationItemAttribute("Security"));
+                CompanyUserTypeInfo.AddAttribute(new ModelDefaultAttribute("Caption", "Users"));
+                CompanyUserTypeInfo.AddAttribute(new PersistentAttribute(Consts.TablePrefix + "USER"));
+                CompanyUserTypeInfo.AddAttribute(new ObjectsDescription("System Users"));
+                CompanyUserTypeInfo.AddAttribute(new VisibleInReportsAttribute(false));
+                CompanyUserTypeInfo.AddAttribute(new DefaultPropertyAttribute("FullName"));
+                CompanyUserTypeInfo.AddAttribute(new ImageNameAttribute("BO_Contact"));
+                IMemberInfo FullNameMemberInfo = CompanyUserTypeInfo.OwnMembers.Where(m => m.Name == "FullName").FirstOrDefault();
+                IMemberInfo CompaniesMemberInfo = CompanyUserTypeInfo.OwnMembers.Where(m => m.Name == "Companies").FirstOrDefault();
+
+
+                if (FullNameMemberInfo != null && CompaniesMemberInfo != null)
+                {
+                    FullNameMemberInfo.AddAttribute(new SizeAttribute(SizeAttribute.DefaultStringMappingFieldSize));
+                    FullNameMemberInfo.AddAttribute(new PersistentAttribute("FULL_NAME"));
+                    FullNameMemberInfo.AddAttribute(new ObjectsDescription("User Full Name"));
+                    CompaniesMemberInfo.AddAttribute(new AssociationAttribute("Company-User",typeof(Company)),true);
+                }
             }
             //Correlative
             if (CorrelativeTypeInfo != null)
@@ -156,7 +180,7 @@ namespace CountableSystem.Module
                 CostCenterTypeInfo.AddAttribute(new ObjectsDescription("CostCenter Catalog"));
                 CostCenterTypeInfo.AddAttribute(new VisibleInReportsAttribute(false));
                 CostCenterTypeInfo.AddAttribute(new DefaultPropertyAttribute("Name"));
-                IMemberInfo NameMemberInfo = CompanyTypeInfo.OwnMembers.Where(m => m.Name == "Name").FirstOrDefault();
+                IMemberInfo NameMemberInfo = CostCenterTypeInfo.OwnMembers.Where(m => m.Name == "Name").FirstOrDefault();
                 if (NameMemberInfo!=null)
                 {
                     NameMemberInfo.AddAttribute(new SizeAttribute(SizeAttribute.DefaultStringMappingFieldSize));
@@ -199,6 +223,13 @@ namespace CountableSystem.Module
                FiscalCalendarTypeInfo.AddAttribute(new ObjectsDescription("Work Calendar"));
                FiscalCalendarTypeInfo.AddAttribute(new VisibleInReportsAttribute(false));
                FiscalCalendarTypeInfo.AddAttribute(new DefaultPropertyAttribute("Initial"));
+                IMemberInfo CycleMemberInfo = FiscalCalendarTypeInfo.OwnMembers.Where(m => m.Name == "Cycle").FirstOrDefault();
+                if (CycleMemberInfo!=null)
+                {
+                    CycleMemberInfo.AddAttribute(new AssociationAttribute("FiscalCalendar-FiscalCalendarCycle", typeof(FiscalCalendarCycle)), true);
+                    CycleMemberInfo.AddAttribute(new DevExpress.Xpo.AggregatedAttribute(),true);
+                }
+               
 
             }
             //FiscalCalendarCycle
@@ -210,26 +241,38 @@ namespace CountableSystem.Module
                FiscalCalendarCycleTypeInfo.AddAttribute(new ObjectsDescription("Fiscal Calendar Cycles"));
                FiscalCalendarCycleTypeInfo.AddAttribute(new VisibleInReportsAttribute(false));
                FiscalCalendarCycleTypeInfo.AddAttribute(new DefaultPropertyAttribute("Item"));
+                IMemberInfo FiscalCalendarMemberInfo = FiscalCalendarCycleTypeInfo.OwnMembers.Where(m => m.Name == "FiscalCalendar").FirstOrDefault();
+                if (FiscalCalendarMemberInfo != null)
+                {
+                    FiscalCalendarMemberInfo.AddAttribute(new AssociationAttribute("FiscalCalendar-FiscalCalendarCycle", typeof(FiscalCalendar)), true);
+                    
+                }
             }
             //Item or Invoice
             if(ItemTypeInfo!=null)
             {
                 ItemTypeInfo.AddAttribute(new DefaultClassOptionsAttribute());
-                IMemberInfo ConceptMemberInfo = CurrencyTypeInfo.OwnMembers.Where(m => m.Name == "Concept").FirstOrDefault();
+                IMemberInfo ConceptMemberInfo = ItemTypeInfo.OwnMembers.Where(m => m.Name == "Concept").FirstOrDefault();
+                IMemberInfo DetailMemberInfo = ItemTypeInfo.OwnMembers.Where(m => m.Name == "Details").FirstOrDefault();
                 if (ConceptMemberInfo!=null)
                 {
                     ConceptMemberInfo.AddAttribute(new SizeAttribute(250));
+                    DetailMemberInfo.AddAttribute(new AssociationAttribute("Item-ItemDetails",typeof(ItemDetail)),true);
+                    DetailMemberInfo.AddAttribute(new DevExpress.Xpo.AggregatedAttribute(),true);
+
                 }
             }
             //ItemDetail or InvoiceDetail
             if (ItemDetailTypeInfo!=null)
             {
                 ItemDetailTypeInfo.AddAttribute(new DefaultClassOptionsAttribute());
-                IMemberInfo ConceptMemberInfo = CurrencyTypeInfo.OwnMembers.Where(m => m.Name == "Concept").FirstOrDefault();
-              
+                IMemberInfo ConceptMemberInfo = ItemDetailTypeInfo.OwnMembers.Where(m => m.Name == "Concept").FirstOrDefault();
+                IMemberInfo ItemMemberInfo = ItemDetailTypeInfo.OwnMembers.Where(m => m.Name == "Item").FirstOrDefault();
+
                 if (ConceptMemberInfo != null)
                 {
                     ConceptMemberInfo.AddAttribute(new SizeAttribute(SizeAttribute.Unlimited));
+                    ItemMemberInfo.AddAttribute(new AssociationAttribute("Item-ItemDetails",typeof(Item)),true,);
                 }
             }
             //ItemType or InvoiceType
@@ -244,30 +287,7 @@ namespace CountableSystem.Module
                     CodeMemberInfo.AddAttribute(new SizeAttribute(SizeAttribute.DefaultStringMappingFieldSize));
                 }
             }
-            //CompanyUser
-            if (CompanyUserTypeInfo!=null)
-            {
-                
-                CompanyUserTypeInfo.AddAttribute(new DefaultClassOptionsAttribute());
-                CompanyUserTypeInfo.AddAttribute(new NavigationItemAttribute("Security"));
-                CompanyUserTypeInfo.AddAttribute(new ModelDefaultAttribute("Caption", "Users"));
-                CompanyUserTypeInfo.AddAttribute(new PersistentAttribute(Consts.TablePrefix + "USER"));
-                CompanyUserTypeInfo.AddAttribute(new ObjectsDescription("System Users"));
-                CompanyUserTypeInfo.AddAttribute(new VisibleInReportsAttribute(false));
-                CompanyUserTypeInfo.AddAttribute(new DefaultPropertyAttribute("FullName"));
-                CompanyUserTypeInfo.AddAttribute(new ImageNameAttribute("BO_Contact"));
-                IMemberInfo FullNameMemberInfo = ItemTypeTypeInfo.OwnMembers.Where(m => m.Name == "Name").FirstOrDefault();
-                IMemberInfo CompaniesMemberInfo = ItemTypeTypeInfo.OwnMembers.Where(m => m.Name == "Companies").FirstOrDefault();
-
-
-                if (FullNameMemberInfo != null && CompaniesMemberInfo!=null)
-                {
-                    FullNameMemberInfo.AddAttribute(new SizeAttribute(SizeAttribute.DefaultStringMappingFieldSize));
-                    FullNameMemberInfo.AddAttribute(new PersistentAttribute("FULL_NAME"));
-                    FullNameMemberInfo.AddAttribute(new ObjectsDescription("User Full Name"));
-                    CompaniesMemberInfo.AddAttribute(new AssociationAttribute("User-Companies", typeof(Company)));
-                }
-            }
+           
             //CustomLogonParametersForStandardAuthentication
             if(CustomLogonTypeInfo!=null)
             {

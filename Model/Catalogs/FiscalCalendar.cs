@@ -40,7 +40,7 @@ namespace CS.Model.Catalog
         }
 
 
-        [Association("FiscalCalendar-Cycle"),DevExpress.Xpo.Aggregated]
+        //[Association("FiscalCalendar-Cycle"),DevExpress.Xpo.Aggregated]
         public XPCollection<FiscalCalendarCycle> Cycle
         {
             get

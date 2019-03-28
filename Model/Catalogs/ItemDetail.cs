@@ -25,7 +25,7 @@ namespace CS.Model.Catalog
         string concept;
         Catalog contableAccount;
         Item item;
-        [Association("Item-Details")]
+       // [Association("Item-Details")]
         public Item Item
         {
             get { return item; }

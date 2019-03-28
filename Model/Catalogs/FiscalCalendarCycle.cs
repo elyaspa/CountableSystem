@@ -25,7 +25,7 @@ namespace CS.Model.Catalog
         }
 
         FiscalCalendar fiscalCalendar;
-        [Association("FiscalCalendar-Cycle")]
+       // [Association("FiscalCalendar-Cycle")]
         public FiscalCalendar FiscalCalendar
         {
             get { return fiscalCalendar; }

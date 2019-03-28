@@ -77,7 +77,7 @@ namespace CS.Model.Catalog
             set { SetPropertyValue(nameof(Cycle), ref cycle, value); }
         }
 
-        [Association("Item-Details"),DevExpress.Xpo.Aggregated]
+        //[Association("Item-Details"),DevExpress.Xpo.Aggregated]
         public XPCollection<ItemDetail> Details
         {
             get
