@@ -6,4 +6,278 @@
   <SchemaModules>
     <SchemaModule Name="SystemModule" Version="18.2.4.0" IsNewNode="True" />
   </SchemaModules>
+  <Views>
+    <DetailView Id="AuditableBaseObject_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="XPObject" Caption="Oid" Direction="Horizontal" Index="0" RelativeSize="100">
+              <LayoutItem Id="Oid" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="BalanceCatalog_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="BalanceCatalog" RelativeSize="19.488817891373802">
+              <LayoutGroup Id="BalanceCatalog_col1" RelativeSize="50">
+                <LayoutItem Id="Cycle" RelativeSize="36.363636363636367" />
+                <LayoutItem Id="CountableAccount" RelativeSize="27.272727272727273" />
+                <LayoutItem Id="InitialBalance" RelativeSize="36.363636363636367" />
+              </LayoutGroup>
+              <LayoutGroup Id="BalanceCatalog_col2" RelativeSize="50">
+                <LayoutItem Id="Debt" RelativeSize="36.363636363636367" />
+                <LayoutItem Id="Credit" RelativeSize="27.272727272727273" />
+                <LayoutItem Id="FinalBalance" RelativeSize="36.363636363636367" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="CompanyBaseObject" RelativeSize="5.7507987220447285">
+              <LayoutItem Id="Company" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="XPObject" Caption="Oid" Direction="Horizontal" Index="2" RelativeSize="74.760383386581466">
+              <LayoutItem Id="Oid" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="BaseCatalog_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="BaseCatalog" RelativeSize="27.156549520766774">
+              <LayoutGroup Id="BaseCatalog_col1" RelativeSize="50">
+                <LayoutItem Id="Dependency" RelativeSize="23.529411764705884" />
+                <LayoutItem Id="AccountNumber" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="Name" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="CreditType" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="Level" RelativeSize="23.529411764705884" />
+              </LayoutGroup>
+              <LayoutGroup Id="BaseCatalog_col2" RelativeSize="50">
+                <LayoutItem Id="Type" RelativeSize="23.529411764705884" />
+                <LayoutItem Id="Status" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="Totalizator" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="Impact" RelativeSize="41.1764705882353" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="XPObject" Caption="Oid" Direction="Horizontal" Index="1" RelativeSize="72.843450479233226">
+              <LayoutItem Id="Oid" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Catalog_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="Catalog" RelativeSize="27.156549520766774">
+              <LayoutGroup Id="Catalog_col1" RelativeSize="50">
+                <LayoutItem Id="Dependency" RelativeSize="23.529411764705884" />
+                <LayoutItem Id="AccountNumber" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="Name" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="Level" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="CreditType" RelativeSize="23.529411764705884" />
+              </LayoutGroup>
+              <LayoutGroup Id="Catalog_col2" RelativeSize="50">
+                <LayoutItem Id="Type" RelativeSize="23.529411764705884" />
+                <LayoutItem Id="Status" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="Totalizator" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="Impact" RelativeSize="17.647058823529413" />
+                <LayoutItem Id="RequireCC" RelativeSize="23.529411764705884" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="CompanyBaseObject" RelativeSize="5.7507987220447285">
+              <LayoutItem Id="Company" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="XPObject" Caption="Oid" Direction="Horizontal" Index="2" RelativeSize="67.092651757188492">
+              <LayoutItem Id="Oid" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Company_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="18.530351437699679">
+            <LayoutGroup Id="Company" RelativeSize="74.137931034482762">
+              <LayoutItem Id="Code" RelativeSize="37.2093023255814" />
+              <LayoutItem Id="Name" RelativeSize="27.906976744186046" />
+              <LayoutItem Id="Currency" RelativeSize="34.883720930232556" />
+            </LayoutGroup>
+            <LayoutGroup Id="XPObject" Caption="Oid" Direction="Horizontal" Index="1" RelativeSize="25.862068965517242">
+              <LayoutItem Id="Oid" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="Users_Group" Direction="Vertical" RelativeSize="81.469648562300321">
+            <LayoutItem Id="Users" RelativeSize="100" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="CompanyBaseObject_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="CompanyBaseObject" RelativeSize="6.0702875399361025">
+              <LayoutItem Id="Company" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="XPObject" Caption="Oid" Direction="Horizontal" Index="1" RelativeSize="93.9297124600639">
+              <LayoutItem Id="Oid" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Correlative_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="Correlative" RelativeSize="13.258785942492013">
+              <LayoutItem Id="Cycle" RelativeSize="38.554216867469883" />
+              <LayoutItem Id="ItemType" RelativeSize="28.91566265060241" />
+              <LayoutItem Id="Number" RelativeSize="32.53012048192771" />
+            </LayoutGroup>
+            <LayoutGroup Id="CompanyBaseObject" RelativeSize="5.2715654952076676">
+              <LayoutItem Id="Company" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="XPObject" Caption="Oid" Direction="Horizontal" Index="2" RelativeSize="81.469648562300321">
+              <LayoutItem Id="Oid" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="CostCenter_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="CostCenter" RelativeSize="5.5910543130990416">
+              <LayoutItem Id="Name" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="CompanyBaseObject" RelativeSize="5.2715654952076676">
+              <LayoutItem Id="Company" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="XPObject" Caption="Oid" Direction="Horizontal" Index="2" RelativeSize="89.1373801916933">
+              <LayoutItem Id="Oid" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Currency_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="Currency" RelativeSize="9.9041533546325873">
+              <LayoutItem Id="Description" RelativeSize="51.612903225806448" />
+              <LayoutItem Id="Symbol" RelativeSize="48.387096774193552" />
+            </LayoutGroup>
+            <LayoutGroup Id="XPObject" Caption="Oid" Direction="Horizontal" Index="1" RelativeSize="90.095846645367416">
+              <LayoutItem Id="Oid" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="FiscalCalendar_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="19.488817891373802">
+            <LayoutGroup Id="FiscalCalendar" RelativeSize="48.360655737704917">
+              <LayoutItem Id="Initial" RelativeSize="54.237288135593218" />
+              <LayoutItem Id="Final" RelativeSize="45.762711864406782" />
+            </LayoutGroup>
+            <LayoutGroup Id="CompanyBaseObject" RelativeSize="27.049180327868854">
+              <LayoutItem Id="Company" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="XPObject" Caption="Oid" Direction="Horizontal" Index="2" RelativeSize="24.590163934426229">
+              <LayoutItem Id="Oid" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="Cycle_Group" Direction="Vertical" RelativeSize="80.5111821086262">
+            <LayoutItem Id="Cycle" RelativeSize="100" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Item_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="33.865814696485621">
+            <LayoutGroup Id="Item" RelativeSize="68.867924528301884">
+              <LayoutGroup Id="Item_col1" RelativeSize="50">
+                <LayoutItem Id="Date" RelativeSize="28.571428571428573" />
+                <LayoutItem Id="Number" RelativeSize="21.428571428571427" />
+                <LayoutItem Id="Type" RelativeSize="21.428571428571427" />
+                <LayoutItem Id="Concept" RelativeSize="28.571428571428573" />
+              </LayoutGroup>
+              <LayoutGroup Id="Item_col2" RelativeSize="50">
+                <LayoutItem Id="TotalDebt" RelativeSize="28.571428571428573" />
+                <LayoutItem Id="TotalCredit" RelativeSize="21.428571428571427" />
+                <LayoutItem Id="Cycle" RelativeSize="50" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="CompanyBaseObject" RelativeSize="16.9811320754717">
+              <LayoutItem Id="Company" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="XPObject" Caption="Oid" Direction="Horizontal" Index="2" RelativeSize="14.150943396226415">
+              <LayoutItem Id="Oid" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="Details_Group" Direction="Vertical" RelativeSize="66.134185303514371">
+            <LayoutItem Id="Details" RelativeSize="100" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="ItemDetail_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="25.23961661341853">
+            <LayoutGroup Id="ItemDetail" RelativeSize="77.215189873417728">
+              <LayoutGroup Id="ItemDetail_col1" RelativeSize="50">
+                <LayoutItem Id="Item" RelativeSize="36.363636363636367" />
+                <LayoutItem Id="ContableAccount" RelativeSize="27.272727272727273" />
+                <LayoutItem Id="Debt" RelativeSize="36.363636363636367" />
+              </LayoutGroup>
+              <LayoutGroup Id="ItemDetail_col2" RelativeSize="50">
+                <LayoutItem Id="Credit" RelativeSize="36.363636363636367" />
+                <LayoutItem Id="CostCenter" RelativeSize="63.636363636363633" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="XPObject" Caption="Oid" Direction="Horizontal" Index="1" RelativeSize="22.784810126582279">
+              <LayoutItem Id="Oid" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" RelativeSize="74.760383386581466">
+            <LayoutItem Id="Concept" RelativeSize="100" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="ItemType_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="ItemType" RelativeSize="13.258785942492013">
+              <LayoutItem Id="Code" RelativeSize="38.554216867469883" />
+              <LayoutItem Id="Name" RelativeSize="28.91566265060241" />
+              <LayoutItem Id="Account" RelativeSize="32.53012048192771" />
+            </LayoutGroup>
+            <LayoutGroup Id="CompanyBaseObject" RelativeSize="5.2715654952076676">
+              <LayoutItem Id="Company" RelativeSize="100" />
+            </LayoutGroup>
+            <LayoutGroup Id="XPObject" Caption="Oid" Direction="Horizontal" Index="2" RelativeSize="81.469648562300321">
+              <LayoutItem Id="Oid" Removed="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
 </Application>
